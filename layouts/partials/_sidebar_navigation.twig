@@ -1,0 +1,38 @@
+<div class="responsive-navigation" role="navigation">
+    <div class="close-menu" style="display: block;">
+        <svg class="icon_close" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" version="1.1" enable-background="new 0 0 512 512">
+            <path d="M284.1,256L506.2,33.9c7.8-7.8,7.8-20.3,0-28.1s-20.3-7.8-28.1,0L256,227.9L33.9,5.8 c-7.8-7.8-20.3-7.8-28.1,0s-7.8,20.3,0,28.1L227.9,256L5.8,478.1c-7.8,7.8-7.8,20.3,0,28.1c3.9,3.9,9,5.8,14,5.8s10.2-1.9,14-5.8 L256,284.1l222.1,222.1c3.9,3.9,9,5.8,14,5.8s10.2-1.9,14-5.8c7.8-7.8,7.8-20.3,0-28.1L284.1,256z">
+        </svg>
+    </div>
+
+    <form class="responsive_search" action="{{blog.url}}/search" method="get">
+        <input class="side-navigation__search" type="text" placeholder="Search here" name ="s" value="{{_AppHelper.getRequest('s')}}" required>
+        <button type="submit" class="search_button"><i class="fa fa-search"></i></button>
+    </form>
+
+    <ul class="responsive-navigation__list">
+        <!--
+        <li class="responsive-navigation__item"><a href="{{homeUrl}}" class="responsive-navigation__link">Home</a></li>
+        -->  
+        {% set menuItems = blog.blogHeaderMenu %}
+            {% for parentItem in menuItems %}
+                {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+            <li class="responsive-navigation__item">
+                <a href="{{parentItem.link |raw}}" class="responsive-navigation__link {{activeClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                    {{ ((parentItem.label is empty) ? ((parentItem.pageTitle is empty)? parentItem.blogTitle : parentItem.pageTitle) : parentItem.label )}}
+
+                </a>
+                {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                    <ul class="sub-menu">
+                        {% for childItem in parentItem.children%}
+                            <li><a href="{{childItem.link |raw}}">
+                                    {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty)? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                            </a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>

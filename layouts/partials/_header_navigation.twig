@@ -1,0 +1,41 @@
+<div class="header__navigation-responsive">
+Menu
+</div>
+<div class="header__navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="header__navigation-row">
+                    <ul class="header__navigation-list">
+                        {% set menuItems = blog.blogHeaderMenu %}
+                            {% for parentItem in menuItems %}
+                            {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
+                            {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
+                            <li class="header__navigation-item">
+                                <a href="{{parentItem.link |raw}}" class="header__navigation-link {{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {{ ((parentItem.label is empty) ? ((parentItem.pageTitle is empty)? parentItem.blogTitle : parentItem.pageTitle) : parentItem.label )}}
+                                </a>
+                                {% if parentItem.children is defined and parentItem.children | length > 0 %}
+                                    <ul class="sub-menu">
+                                        {% for childItem in parentItem.children%}
+                                            {% set externalClass = (childItem.isExternal) ? 'external-link' : '' %}
+                                        <li><a class="{{externalClass}}" href="{{childItem.link |raw}}" {% if childItem.target != "" %}target="{{childItem.target}}"{% endif %}>
+                                              
+                                                {{ ((childItem.label is empty) ? ((childItem.pageTitle is empty)? childItem.blogTitle : childItem.pageTitle) : childItem.label)}}
+                                         </a></li>
+                                         {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="header__search">
+                        <form action="{{blog.url}}/search" method="get">
+                            <input type="text" class="header__search-text" placeholder="Search ..." name="s" value="{{_AppHelper.getRequest('s')}}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

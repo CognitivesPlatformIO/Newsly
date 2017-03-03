@@ -1,0 +1,12 @@
+<div class="news__social {{ (class is defined) ? class : '' }}" data-guid="{{article.guid}}"> 
+    <a href="http://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" target="_blank" class="news__social-link news__social-link--facebook">Share</a>
+    <a href="http://twitter.com/intent/tweet?status={{ article.title|url_encode }} {{article.url}}" target="_blank" class="news__social-link news__social-link--twitter">Share</a>
+    <a href="https://plus.google.com/share?url={{article.url}}" target="_blank" class="news__social-link news__social-link--google-plus">Share</a>
+    
+    {% set subject = article.title~' '~_Network.getNetworkTitle()%}
+    {% set body = 'I thought you would find this article interesting'|url_encode%}
+    {% set body = body ~'%0D%0A%0D%0A' ~ article.url%}
+    
+    <a href="mailto:?subject={{subject}}&body={{body}}"  class="news__social-link news__social-link--email">Email</a>
+    <a href="#disqusCommentBlock"  class="news__social-link news__social-link--comments disqusComment" ><span class="total">{{article.total['comment']}}</span> Comments</a>
+</div>

@@ -1,0 +1,8 @@
+{% set popularArticles = _Article.getPopularArticles({ limit: 5, excludeArticleIds : articleId }) %}
+{% if popularArticles|length > 0 %}
+    {% for article in popularArticles %}
+        {{this.render('../_single-article.twig', {article: article, containerClass: 'col-third-short', cardClass : 'card__news'}) | raw}}
+    {% endfor %}
+{% else %}
+    <p class="nodata text-center">No data found.</p>
+{% endif %}

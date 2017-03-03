@@ -1,0 +1,89 @@
+{{ set(this, 'title', 'Search - ' ~ search) }}
+
+{{this.registerJs("SearchController.listing();")}}
+
+{% set limit = 20 %}
+{% set articles = _Search.searchArticles({'limit': limit, 'offset': 0, 'search': search}) %}
+
+<div class="section section--local">
+{% if articles|length > 0 %}
+  <div class="section__content">
+    <div class="row">
+      
+            {% if articles|length > 0 %}
+                {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'col-full', cardClass : 'card__news card--rural'}) | raw}}
+            {% endif %}
+        
+            {% for i in 1..4 %}
+                {% if articles[i] %}
+                    {{this.render('partials/_single-article.twig', {article: articles[i], containerClass: 'col-quarter', cardClass : 'card__news card--local'}) | raw}}
+                {% endif %}
+            {% endfor %}
+        
+    </div>
+  </div>
+<!--</div>-->
+
+<!--<div class="section">-->
+<!--  <div class="section__header">
+    <div class="section__header-container">
+      <div class="section--left">
+        <div class="section__heading">Section Title</div>
+      </div>
+    </div>
+  </div> -->
+  <div class="section__content {% if not articles[5] %}hide{%endif%}">
+    <div class="row">
+        
+        {% if articles[5] %}
+            {{this.render('partials/_single-article.twig', {article: articles[5], containerClass: 'col-two-thirds', cardClass : 'card__news card--rural'}) | raw}}
+        {% endif %}
+
+        {% for i in 6..8 %}
+            {% if articles[i] %}
+                {{this.render('partials/_single-article.twig', {article: articles[i], containerClass: 'col-third-short', cardClass : 'card__news card--local'}) | raw}}
+            {% endif %}
+        {% endfor %}
+        
+        {% for i in 9..11 %}
+            {% if articles[i] %}
+                {{this.render('partials/_single-article.twig', {article: articles[i], containerClass: 'col-third', cardClass : 'card__news card--local'}) | raw}}
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+  </div>
+<!--</div>-->
+
+<!--<div class="section">-->
+<!--  <div class="section__header">
+    <div class="section__header-container">
+      <div class="section__heading">Section Title</div>
+    </div>
+  </div> -->
+  <div class="section__content {% if not articles[12] %}hide{%endif%}">
+    <div class="row">
+        
+        {% for i in 12..19 %}
+            {% if articles[i] %}
+                {{this.render('partials/_single-article.twig', {article: articles[i], containerClass: 'col-quarter', cardClass : 'card__news card--local'}) | raw}}
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+  </div>
+        
+    <div class="section__content {% if articles|length < limit %}hide{%endif%}">
+        <div class="row ajaxArticles" data-offset="{{limit}}"></div>
+    </div>        
+    {% if articles|length >= limit %}
+    <button 
+        class="sub_header__button loadMoreArticles" style="border: none; color: #FFF; margin-left: 43%; cursor: pointer;"
+            >Load More</button>
+    {% endif %}
+{% else %}
+    <p class="nodata text-center">No search result found.</p>
+{% endif %}
+</div>
+                
+        

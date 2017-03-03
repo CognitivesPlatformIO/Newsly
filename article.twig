@@ -1,0 +1,158 @@
+{{ set(this, 'title', article.title) }}
+
+{{this.registerJs("ArticleController.view();")}}
+
+{% set network = _Network.getNetworkData() %}
+{% set status = 'follow' %}
+{% set text = 'Follow +' %}
+{% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
+    {% set status = 'unfollow' %}
+    {% set text = 'Following -' %}
+{% endif %}
+{% set placeholder = network.templatePath~'/static/images/placeholder/placeholder.svg' %}
+
+
+{% set publisher = {height: 60, width: 600, name: network.title, logo: network.templatePath~'/static/images/themeLogo.svg'} %}
+{% if network.logoMedia | length > 0 %}
+    {% set publisher = publisher|merge({logo:_Media.getMediaUrl(network.logoMedia, publisher.width, publisher.height, {'crop': 'lpad'} )})%}
+{% endif %}
+<div class="sub_header">
+    <div class="sub_header__container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="sub_header_section">
+                    <div class="sub_header--left">
+                        <a href="{{article.blog['url']}}" class="sub_header__heading">
+                            {{article.label}}
+                        </a>
+                            <div class="sub_header__breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{_AppHelper.getBaseUrl()}}" class="sub_header__breadcrumb-link">Home
+                                    <meta itemprop="url" content="{{_AppHelper.getBaseUrl()}}"/>
+                                    <meta itemprop="name" content="Home" />
+                                    <meta itemprop="position" content="1" />
+                                </a>
+                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.blog['url']}}" class="sub_header__breadcrumb-link">{{article.blog['title']}}
+                                    <meta itemprop="url" content="{{article.blog['url']}}"/>
+                                    <meta itemprop="name" content="{{article.blog['title']}}" />
+                                    <meta itemprop="position" content="2" />
+                                </a>
+                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.url}}" class="sub_header__breadcrumb-link">{{article.title}}
+                                    <meta itemprop="url" content="{{article.url}}"/>
+                                    <meta itemprop="name" content="{{article.title}}" />
+                                    <meta itemprop="position" content="3" />
+                                </a>
+                            </div>
+                    </div>
+                    <div class="sub_header--right">
+                        {% if _User.isGuest() %}
+                        <a href="javascript:void(0)" class="sub_header__button forceLoginModal">Follow +</a>
+                        {% else %}
+                            <a href="javascript:void(0)" class="sub_header__button followArticleBtn" data-guid="{{article.blog['guid']}}" data-status="{{status}}">{{text}}</a>
+                        {% endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"><!-- Blank Tag --></div>
+
+
+<div class="article_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div itemscope itemtype="http://schema.org/NewsArticle" class="article_wrapper {{ article.media|length > 0 ? '' : 'news__no_image' }}">
+                    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{article.url}}"/>
+                    <meta itemprop="url" content="{{article.url}}">
+                    <meta itemprop="dateModified" content="{{article.updatedAt}}">
+                    {% if publisher.logo is not empty %}
+                    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="{{publisher.name}}"/>
+                        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                            <meta itemprop="url" content="{{publisher.logo}}"/>
+                            <meta itemprop="width" content="{{publisher.width}}"/>
+                            <meta itemprop="height" content="{{publisher.height}}"/>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <section class="section-header">
+                                <h1 itemprop="headline">{{article.title | raw}}</h1>
+                                <div class="head-caption">
+                                    <span class="upper">By</span>
+                                    <span class="upper" itemprop="author" itemscope itemtype="https://schema.org/Person"><a itemprop="name" href="{{_AppHelper.getUserProfileUrl(article.createdBy['username'])}}">{{article.createdBy['displayName']}}</a></span>
+                                    <span class="upper divider" itemprop="datePublished">{{article.publishedDate}}</span>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            {% set shareClass =  article.media|length > 0 ? 'news__social-topLink social_top_connect' : 'news__social--horizontal social_connect_top_section' %}  
+                            {{this.render('partials/article/_share_article_buttons.twig', {article: article, class: shareClass}) | raw}}
+                            <div class="news__slides">
+                                <div class="slides">
+                                {% for media in article.media %}
+                                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" class="news__slide slide lazyload-remove" data-thumbnail="{{media.path}}" data-original="{{media.path}}" style="background-image: url({{media.path}})">
+                                        <meta itemprop="url" content="{{media.path}}">
+                                        <meta itemprop="height" content="{{media.height}}">
+                                        <meta itemprop="width" content="{{media.width}}">
+                                        {% if media.type == 'video' %} 
+                                            {% set mediaUrl = "" %}
+                                            {% if media.isSystemVideo == 'TRUE'%}
+                                                {% set mediaUrl = _Media.getMediaVideoUrl(media, 0, 0,{resource_type: 'video', format: 'mp4'})  %}
+                                            {% endif %}
+                                        <a href="javascript:void(0)" itemprop="video" class="video-overlay video-player" data-source="{{media.source}}" data-video-id="{{media.videoId}}" data-url="{{mediaUrl}}" data-poster="{{media.path}}" data-caption="{{article.title | raw}}">
+                                           <div class="icons">
+                                               <div class="icon"><i class="fa fa-play"></i></div>
+                                           </div>
+                                        </a>
+                                      
+                                       {% if media.caption | length %}
+                                       <div class="news__slide-caption">{{media.caption | raw}}</div>
+                                       {% endif %}                                    
+                                    {% endif %}
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="news__main">
+                                <div class="article-content-section">
+                                    <div class="content-area" itemprop="articleBody">
+                                        {{article.content | raw}}
+                                    </div>
+                                    {{this.render('partials/article/_share_article_buttons.twig', {article: article, class : 'news__social--horizontal'}) | raw}}
+                                </div>
+                            </div>
+                            <div class="news__sidebar">
+                                {{this.render("partials/article/_popular_articles.twig", {articleId: article.id, publisher: publisher}) | raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% set network = _Network.getNetworkData() %}
+{% if network.thirdPartyIntegrations['disqus'] | length > 0 and network.thirdPartyIntegrations['disqus']['shortName'] != '' %}
+<div class="news-comment-container" id="disqusCommentBlock" style="margin-bottom:30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 com-xs-12">
+                <div class="">
+                    {{this.render("partials/article/_disqus_comments.twig", {disqus: network.thirdPartyIntegrations['disqus'], userId: article.createdBy['id'], url:article.url, articleId: article.id}) | raw}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}         

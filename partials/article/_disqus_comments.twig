@@ -1,0 +1,17 @@
+{% set disqusArr = _AppHelper.getDisqusToken(disqus) %}
+{% if disqusArr.token != FALSE and disqusArr.token != '' %}
+{% set disqusJsParams = {articleId: articleId, url: url, userId:userId, token: disqusArr.token, networkName: disqusArr.networkName, shortName:disqus.shortName, apiKey: disqus.apiKey  }  %}
+{{this.registerJs('$.fn.Disqus({params:'~ disqusJsParams|json_encode|raw ~'})')}}
+<div class="panel-group" id="accordion3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#FBComment"><i class="fa fa-comments"></i>Comments(<span class="disqus-comment-count" data-disqus-identifier="{{articleId}}">0</span>)</a></h4>
+        </div>
+        <div id="FBComment" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

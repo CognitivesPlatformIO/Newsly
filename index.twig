@@ -1,0 +1,89 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 20 %}
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+<div class="section section--local">
+  <div class="section__content">
+    <div class="row">
+      
+            {% if articles|length > 0 %}
+                {{this.render('partials/_single-article.twig', {article: articles[0], 'position': 1, containerClass: 'col-full', cardClass : 'card__news card--rural'}) | raw}}
+            {% endif %}
+        
+            {% for i in 1..4 %}
+                {% if articles[i] %}
+                    {{this.render('partials/_single-article.twig', {article: articles[i], 'position': (i+1), containerClass: 'col-quarter', cardClass : 'card__news card--local'}) | raw}}
+                {% endif %}
+            {% endfor %}
+        
+    </div>
+  </div>
+<!--</div>-->
+
+<!--<div class="section">-->
+<!--  <div class="section__header">
+    <div class="section__header-container">
+      <div class="section--left">
+        <div class="section__heading">Section Title</div>
+      </div>
+    </div>
+  </div> -->
+{% if articles[5] is defined %}
+    <div class="section__content">
+        <div class="row">
+            {% if articles[5] %}
+                {{this.render('partials/_single-article.twig', {article: articles[5], 'position': 6, containerClass: 'col-two-thirds', cardClass : 'card__news card--rural'}) | raw}}
+            {% endif %}
+
+            {% for i in 6..8 %}
+                {% if articles[i] %}
+                    {{this.render('partials/_single-article.twig', {article: articles[i], 'position': (i+1), containerClass: 'col-third-short', cardClass : 'card__news card--local'}) | raw}}
+                {% endif %}
+            {% endfor %}
+
+            {% for i in 9..11 %}
+                {% if articles[i] %}
+                    {{this.render('partials/_single-article.twig', {article: articles[i], 'position': (i+1), containerClass: 'col-third', cardClass : 'card__news card--local'}) | raw}}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+<!--</div>-->
+
+<!--<div class="section">-->
+<!--  <div class="section__header">
+    <div class="section__header-container">
+      <div class="section__heading">Section Title</div>
+    </div>
+  </div> -->
+    {% if articles[12] is defined %}
+        <div class="section__content">
+            <div class="row">
+                {% for i in 12..19 %}
+                    {% if articles[i] %}
+                        {{this.render('partials/_single-article.twig', {article: articles[i], 'position': (i+1), containerClass: 'col-quarter', cardClass : 'card__news card--local'}) | raw}}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+      
+    {% if articles|length >= limit %}
+        <div class="section__content">
+            <div class="row ajaxArticles" data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}" data-offset="{{limit}}"></div>
+            <a class="section__link loadMoreArticles" href="#">Load more <i class="fa fa-refresh"></i></a>
+        </div>
+    {% endif %}
+    
+    {% set noDataCls = 'hide' %}
+    {% if articles|length == 0 %}
+        {% set noDataCls = '' %}
+     {% endif %}
+    <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
+        <p class="no-data text-center">No articles found.</p>  
+    </div>
+    
+</div>
