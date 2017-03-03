@@ -1,5 +1,5 @@
 {{ set(this, 'title', _Blog.getBlogTitle()) }}
-
+<h1>Break Me</h1>
 {{this.registerJs("HomeController.listing();")}}
 {% set limit = 20 %}
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
