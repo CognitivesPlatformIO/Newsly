@@ -36,14 +36,14 @@ module.exports = function(grunt) {
                         '../../static/sdk/js/yii/yii.captcha.js',
                         '../../static/sdk/js/uploadfile.js',
                         '../../static/sdk/js/media-player/mediaelement-and-player.min.js',
-                        'static/development/js/_article-templates.js',
-                        'static/development/js/common.js',
-                        'static/development/js/home.js',
-                        'static/development/js/article.js',
-                        'static/development/js/search.js',
-                        'static/development/js/user-articles.js',
-                        'static/development/js/auth.js',
-                        'static/development/js/user-profile.js'
+                        'static/dev/js/_article-templates.js',
+                        'static/dev/js/common.js',
+                        'static/dev/js/home.js',
+                        'static/dev/js/article.js',
+                        'static/dev/js/search.js',
+                        'static/dev/js/user-articles.js',
+                        'static/dev/js/auth.js',
+                        'static/dev/js/user-profile.js'
                     ]
                 }
             }

@@ -1,5 +1,6 @@
 {% set network = _Network.getNetworkData() %}
 {% set placeholder = network.templatePath~'/static/images/placeholder/placeholder.svg' %}
+
 {% if article.articleId > 0 %}
     {% set articleImg = '' %}
     {% if article.featuredMedia | length > 0 %}
@@ -13,12 +14,20 @@
             {% set imgWidth = 500 %}
             {% set imgHeight = 350 %}
         {% endif %}
+        {% if containerClass == 'col-quarter' %}
+            {% set imgWidth = 280 %}
+            {% set imgHeight = 220 %}
+        {% endif %}
+        {% if containerClass == 'col-two-thirds' %}
+            {% set imgWidth = 400 %}
+            {% set imgHeight = 450 %}
+        {% endif %}
         {% set articleImg = _Media.getMediaUrl(article.featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
     {% endif %}
     {% set promotedClass = (article.isPromoted) ? 'ad_icon' : '' %}
     {% set hasArticleMediaClass = (article.hasMedia == 'TRUE') ? 'withImage__content': 'without__image' %}
     {% set blogClass = 'card--blog_'~article.blog['id'] %}
-    <div itemscope itemtype="http://schema.org/NewsArticle"  class="article {{containerClass}} ">
+    <div itemscope itemtype="http://schema.org/NewsArticle"  class="article {{containerClass}}">
         <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{article.url}}"/>
         {% if article.featuredMedia['media'] is defined and  article.featuredMedia['media'] | length > 0%}
             <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
