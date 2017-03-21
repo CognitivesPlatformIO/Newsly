@@ -8,7 +8,7 @@
             {% set logo = _Media.getMediaUrl(network.logoMedia, 225, 50, {'crop': 'fit'} )%}
         {% endif %}
         <a href="{{logoUrl}}" class="footer__logo">{% if logo is not empty %}<img src="{{logo}}" />{% endif %}</a>
-        <div class="footer__copyright">Copyright {{'now'|date('Y')}}. All rights reserved.</div>
+        <div class="footer__copyright">Copyright {{'now'|date('Y')}}. All rights reserved. Powered By {{network.poweredBy}}</div>
       </div>
         {% set menuItems = blog.blogFooterMenu %}
         {% set halfCounter = (menuItems | length / 2) | round(0, 'ceil') - 1 %}
