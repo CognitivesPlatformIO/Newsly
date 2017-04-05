@@ -1,0 +1,19 @@
+
+/* Begin Content box breakup css */
+.container {
+	max-width: inherit !important;
+}
+.content-wrap.terms_page .content_area {
+	padding: 0px !important;
+	margin-bottom: 100px;
+}
+.content-wrap.terms_page .content_area .is-box {
+	position: relative !important;
+	overflow: hidden !important;
+}
+.content-wrap.terms_page .content_area .container, .content-wrap.terms_page .content_area .login-page > .container, .content-wrap.terms_page .content_area .header__container, .content-wrap.terms_page .content_area .profile__container, .content-wrap.terms_page .content_area .article__banner--caption, .content-wrap.terms_page .content_area .article__header {
+	width: 96% !important;
+}
+
+
+/* //End Content box breakup css */
