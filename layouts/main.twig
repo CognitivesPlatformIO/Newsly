@@ -6,6 +6,7 @@
     <head itemscope itemtype="http://schema.org/WebSite">
         <meta charset="UTF-8"/>
         <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title itemprop='name'>{{this.title | raw}}</title>
         {{ Html.csrfMetaTags | raw }}
         <!-- Google Tag Manager(script) -->
@@ -37,16 +38,17 @@
         <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
         <link rel="canonical" href="http://{{networkData.defaultDomain['domain']}}" itemprop="url">
         
-         <!--[if lte IE 8]><script type="text/javascript" src="{{networkData.templatePath}}/static/js/ie/ie.js"></script><![endif]-->
+		<!--[if lte IE 8]><script type="text/javascript" src="{{networkData.templatePath}}/static/js/ie/ie.js"></script><![endif]-->
         <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/box/box.css" rel="stylesheet" type="text/css" />
-        <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/assets/minimalist-basic/content.css" rel="stylesheet" type="text/css" />
+		<link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/assets/minimalist-basic/content.css" rel="stylesheet" type="text/css" />
 
-        <!--Include ContentBuilder.js and ContentBox.js (all js included before the body ends). -->
-        <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/contentbuilder/contentbuilder.css" rel="stylesheet" type="text/css" />
-        <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/contentbox/contentbox.css" rel="stylesheet" type="text/css" />
+		<!--Include ContentBuilder.js and ContentBox.js (all js included before the body ends). -->
+		<link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/contentbuilder/contentbuilder.css" rel="stylesheet" type="text/css" />
+		<link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBoxSource/contentbox/contentbox.css" rel="stylesheet" type="text/css" />
+			
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1491293921367" type="text/css" media="all">
-        {% else %}
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1491399803297" type="text/css" media="all">
+        {% else %}			
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.fancybox/source/jquery.fancybox.css" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.noty-2.3.8/demo/animate.css" />
             <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css" />

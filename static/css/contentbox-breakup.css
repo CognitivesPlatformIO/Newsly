@@ -1,19 +1,47 @@
 
 /* Begin Content box breakup css */
 .container {
-	max-width: inherit !important;
+    max-width: inherit !important;
 }
 .content-wrap.terms_page .content_area {
-	padding: 0px !important;
-	margin-bottom: 100px;
+    padding: 0px !important;
+    margin-bottom: 100px;
 }
-.content-wrap.terms_page .content_area .is-box {
-	position: relative !important;
-	overflow: hidden !important;
+.content-wrap.terms_page .content_area .is-section {
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: #ffffff;
+}
+.content-wrap.terms_page .content_area .is-section hr {
+    border-top: rgba(0, 0, 0, 0.18) 1px solid !important;
+    margin: 0 !important;
+}
+.content-wrap.terms_page .content_area .is-section .row > * {
+    min-height: inherit !important;
 }
 .content-wrap.terms_page .content_area .container, .content-wrap.terms_page .content_area .login-page > .container, .content-wrap.terms_page .content_area .header__container, .content-wrap.terms_page .content_area .profile__container, .content-wrap.terms_page .content_area .article__banner--caption, .content-wrap.terms_page .content_area .article__header {
-	width: 96% !important;
+    width: 90% !important;
 }
-
-
+.content-wrap.terms_page .content_area .is-section.is-section-100 {
+    padding: 85px 0;
+}
+.content-wrap.terms_page .content_area .is-section.is-section-100.is-shadow-1, .content-wrap.terms_page .content_area .is-section.is-section-100.is-boxed-layout {
+    padding: 0;
+}
+.content-wrap.terms_page .content_area .is-section.is-section-100.is-boxed-layout .is-boxes {
+    padding: 55px 0;
+}
+.content-wrap.terms_page .content_area .column.full h1 {
+    margin-bottom: 0px !important;
+}
+.content-wrap.terms_page .content_area .is-section.is-light-text.is-bg-grey h1 {
+    font-size: 42px !important;
+    line-height: 1.3 !important;
+}
+.content-wrap.terms_page .is-box-8 .column.full {
+    padding: 60px 0;
+}
+.content-wrap.terms_page .is-box-8 .column.full h1 {
+    font-size: 23px !important;
+}
 /* //End Content box breakup css */
