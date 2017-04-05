@@ -13,7 +13,7 @@
     width: 100% !important;
     background-color: #ffffff;
 }
-.content-wrap.terms_page .content_area .is-section .column.full h1, .content-wrap.terms_page .content_area .is-section.is-section-100.is-boxed-layout .column.third h1 {
+.content-wrap.terms_page .content_area .is-section .column.full h1, .content-wrap.terms_page .content_area .is-section.is-section-100 .column.third h1 {
     font-size: 23px !important;
     margin-bottom: 0px !important;
 }
