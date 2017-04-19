@@ -1,0 +1,160 @@
+.section {
+  //background-color: $gray-2-color;
+  margin-bottom: 100px;
+  // padding-bottom: 1px;
+
+  a, a:link, a:visited, a:active {
+    color: $base-color;
+  }
+
+  &__header {
+    background-color: $light-color;
+    margin-top: -60px;
+
+    &-container {
+      @extend .container;
+
+      display: table;
+
+      @include tablet {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+      }
+    }
+  }
+  &__heading {
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 0px;
+    padding: 0px;
+    line-height: 80px;
+    text-transform: uppercase;
+
+    &-advertising {
+      background-repeat: no-repeat;
+      display: block;
+      float: right;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      height: 90px;
+      width: 728px;
+
+      @include tablet {
+        background-size: 100% auto;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        height: 70px;
+        width: 520px;
+      }
+
+      @include phone {
+        background-size: 100% auto;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        height: 40px;
+        width: 300px;
+      }
+    }
+
+    @include tablet {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  &__sub-heading {
+    @extend .container;
+
+    background-color: $gray-2-color;
+    color: $base-color;
+    display: block;
+    line-height: 120px;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+
+    strong {
+      color: $selected-color;
+      font-size: 18px;
+    }
+  }
+  &__content {
+    @extend .container;
+    &:before {
+      display: block;
+      clear: both;
+      border-top: 1px $border-color solid;
+    }
+    &.no-border {
+        &:before {
+            border: none;
+        }
+    }
+  }
+  &__link {
+    background-color: $gray-2-color;
+    color: $base-color;
+    display: block;
+    line-height: 80px;
+    border: 1px $border-color solid;
+    font-size: 18px;
+    margin: -1px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &--campaign {
+    background-color: $gray-4-color;
+    margin-top: 120px;
+  }
+
+  &--left {
+    display: table-cell;
+    vertical-align: bottom;
+
+    @include tablet {
+      display: block;
+    }
+    @include phone {
+      display: block;
+    }
+  }
+  &--right {
+    display: table-cell;
+    text-align: right;
+    vertical-align: bottom;
+
+    @include tablet {
+      display: block;
+      text-align: left;
+    }
+    @include phone {
+      display: block;
+      text-align: left;
+    }
+  }
+
+  // Generate modifier classes for each category section
+  @each $section in $sections {
+    $name:  nth($section, 1);
+    $color: nth($section, 2);
+
+    &--#{$name} {
+
+      .section__heading {
+        color: $color;
+      }
+
+      .section__content {
+        &:before {
+          color: $color;
+          border-top-width: 1px;
+          border-top-color: $color;
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+}

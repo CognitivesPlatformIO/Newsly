@@ -1,0 +1,167 @@
+.col-full {
+  .card {
+
+    &__news {
+      &-image {
+        @include card_image;
+
+        margin-left: 20px;
+        width: 65.4%;
+
+        @include tablet {
+          width: 50%;
+        }
+        @include phone {
+          width: 100%;
+        }
+      }
+      &-category {
+        @include card_category;
+
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+      &-heading {
+        @include card_heading_large;
+
+        height: 138px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+      &-description {
+        @include card_text_large;
+
+        height: 120px;
+        margin-bottom: 60px;
+      }
+      &-caption {
+        @include card_text_caption;
+        width: 33% !important;
+        @media #{$media-ipadPortrait} {
+            width: 46% !important;
+        }
+        @media (max-width: 523px) {
+            width: 100% !important;
+        }
+      }
+      &-author {
+        @include card_text_author;
+      }
+      &-date {
+        @include card_text_date;
+      }
+      &-icon-share {
+        @include card_icon;
+
+        background-image: url("../images/icons/social-share.svg");
+        opacity: 0.5;
+        top: 0px;
+        right: 5px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__feature {
+      background-color: $gray-4-color;
+      padding: 40px;
+      position: relative;
+      text-align: center;
+      &-image {
+      }
+      &-heading {
+        @include card_heading_feature;
+
+        color: $base-color;
+        margin-top: 20px;
+      }
+      &-text {
+        @include card_text_feature;
+
+        position: relative;
+      }
+      &-username {
+        color: $dark-color;
+        position: relative;
+        text-transform: uppercase;
+        margin: 20px 0px;
+        z-index: 20;
+      }
+      &-button {
+        background-color: $selected-color;
+        color: #fff;
+        display: inline-block;
+        font-size: 11px;
+        line-height: 40px;
+        padding: 0px 60px;
+        position: relative;
+        text-transform: uppercase;
+        z-index: 20;
+      }
+    }
+  }
+}
+
+
+.col-full {
+    .card {
+        &.only__image {
+            .card__facebook-category, .card__youtube-category, .card__twitter-category, .card__vimeo-category, .card__instagram-category, .card__news-category {
+                margin-bottom:70px;
+            }
+        }
+    }
+}
+
+
+
+.col-full .card.only__image .content_section .description {
+    margin-top:90px!important;
+    overflow:hidden;
+
+    @media #{$media-phone}, #{$media-iPhoneMedium} {
+        margin-top:60px!important;
+    }
+}
+
+.col-full {
+    .card.card__news.only__image {
+        .card__news-category {
+            color:$white!important;
+            margin-bottom:40px!important;
+        }
+
+        .card__news-heading {
+            height:100px!important;
+
+            @media #{$media-phone}, #{$media-iPhoneMedium} {
+                height:80px!important;
+            }
+        }
+
+        .card__news-description {
+            color:$gray-4-color!important;
+
+            @media #{$media-phone}, #{$media-iPhoneMedium} {
+                height:60px!important;
+                margin-bottom:45px!important;
+            }
+        }
+
+        .card__news-caption {
+            width:100%!important;
+
+            @media #{$media-phone}, #{$media-iPhoneMedium} {
+                bottom:20px;
+                position:absolute;
+                 width:calc(100% - 30px)!important;
+            }
+
+            [class*="-by"], [class*="-author"], [class*="-date"] {
+                color:$white!important;
+            }
+        }
+    }
+}

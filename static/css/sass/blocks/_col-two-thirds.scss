@@ -1,0 +1,373 @@
+.col-two-thirds {
+  .card {
+
+    &__news {
+      &-image {
+        @include card_image;
+
+        background-position: 50%;
+
+        @include phone-to-tablet {
+          @include card_image_full;
+
+          float: none;
+          height: 200px;
+          margin-left: 0px;
+          width: 100%;
+        }
+      }
+      &-category {
+        @include card_category;
+
+        margin-bottom: 20px;
+      }
+      &-heading {
+        @include card_heading_large;
+        background-color: transparent !important;
+        height: 138px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        @include phone-to-tablet {
+          @include card_image_full;
+
+          height: 92px;
+        }
+      }
+      &-description {
+        @include card_text_medium;
+        background-color: transparent !important;
+        height: 160px;
+        margin-bottom: 66px;
+
+        @include phone-to-tablet {
+          @include card_image_full;
+
+          height: 60px;
+          margin-bottom: 20px;
+        }
+
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+      }
+      &-date {
+        @include card_text_date;
+      }
+      &-icon {
+        @include card_icon;
+
+        display: none;
+        // background-image: url("../images/icons/category-news.svg");
+        // top: 20px;
+        // left: 45%;
+      }
+      &-icon-share {
+        @include card_icon;
+
+        @include image_background_social_share;
+        opacity: 0.5;
+        position: absolute;
+        left: 45%;
+        top: 0px;
+
+        &:hover {
+          opacity: 1;
+        }
+        @include phone-to-tablet {
+          left: auto;
+          right: 0px;
+        }
+      }
+
+      @include phone {
+        height: auto;
+      }
+    }
+    &__feature {
+      padding: 20px;
+      position: relative;
+
+      &-image {
+        @include card_image_feature;
+      }
+      &-category {
+        background-color: $dark-color;
+        color: map-get($sections, feature);
+        display: inline-block;
+        line-height: 34px;
+        padding: 0px 20px;
+        position: relative;
+        text-transform: uppercase;
+        z-index: 20;
+      }
+      &-heading {
+        @include card_heading_feature;
+
+        margin-top: 40px;
+        text-align: left;
+        margin: 12px 0px 24px;
+        width: auto;
+        strong {
+          color: map-get($sections, feature);
+        }
+      }
+      &-text {
+        @include card_text_feature;
+
+        text-align: left;
+        margin: 0px 0px 48px;
+        width: auto;
+      }
+      &-button {
+        background-color: map-get($sections, feature);
+        background-image:url("../images/circle-arrow.svg");
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        border-radius: 3px;
+        color: #000;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 50px;
+        padding: 0px 60px 0px 30px;
+        position: relative;
+        text-transform: uppercase;
+        z-index: 20;
+      }
+    }
+
+    // Categories
+    &__facebook {
+      &-category {
+        @include card_category;
+
+        color: color(facebook);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-image {
+        @include card_image;
+
+        background-position: 50%;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_facebook2;
+        top: 40px;
+        left: 45%;
+      }
+      &-heading {
+        @include card_heading_small;
+
+        margin-top: 10px;
+      }
+      &-description {
+        @include card_text_medium;
+        height: 100px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+    &__instagram {
+      &-category {
+        @include card_category;
+
+        color: color(instagram);
+        margin-top: 20px;
+      }
+      &-image {
+        @include card_image;
+
+        background-position: 50%;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_instagram;
+        top: 120px;
+        left: 45%;
+
+        @include tablet {
+          top: 160px;
+        }
+      }
+      &-tags {
+        @include card_text_medium;
+
+        color: $selected-color;
+        margin-top: 20px;
+        height: 60px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: $selected-color;
+      }
+    }
+    &__twitter {
+      &-category {
+        @include card_category;
+
+        color: color(twitter);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-image {
+        @include card_image;
+
+        background-position: 50%;
+      }
+      &-icon {
+          &-no-image {
+              @include card_icon;
+            background-image: url("../images/icons/category-twitter.svg");
+            right: 25px;
+            top: 40px;
+          }
+        @include card_icon;
+        @include image_background_social_twitter2;
+        top: 40px;
+        left: 45%;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: $selected-color;
+        margin-bottom: 10px;
+      }
+      &-description {
+        @include card_text_large;
+        height: 180px;
+        margin-bottom: 176px;
+        &.no-image {
+            margin-bottom: 0px;
+            @media #{$media-iPhoneMedium}, #{$media-phone} {
+                margin-bottom: 10px;
+            }
+        }
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+        color: color(twitter);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+    &__twitter_no_image {
+
+      &-icon {
+          @include card_icon_short;
+
+          background-image: url("../images/icons/category-twitter.svg");
+          right: 25px;
+          top: 25px;
+      }
+      &-name {
+        display: none;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: $selected-color;
+        margin-bottom: 5px;
+      }
+      &-description {
+        @include card_text_medium;
+
+        height: 60px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &__youtube {
+      &-category {
+        @include card_category;
+
+        color: color(youtube);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-image {
+        @include card_image;
+
+        background-position: 50%;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_youtube;
+        top: 105px;
+        left: 45%;
+      }
+      &-heading {
+        @include card_heading_medium;
+      }
+      &-description {
+        display: none;
+      }
+      &-sub_heading {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+    }
+
+	&__vimeo {
+      &-category {
+        @include card_category;
+
+        color: color(vimeo);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-image {
+        @include card_image;
+        background-position: 50%;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_vimeo;
+        top: 105px;
+        left: 45%;
+      }
+      &-heading {
+        @include card_heading_medium;
+      }
+      &-description {
+        display: none;
+      }
+      &-sub_heading {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+    }
+
+  }
+}

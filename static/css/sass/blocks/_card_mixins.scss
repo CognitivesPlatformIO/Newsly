@@ -1,0 +1,234 @@
+// Images
+@mixin card_image {
+  @include image_background;
+
+  float: right;
+  width: 50%;
+  height: 100%;
+  margin-left: 20px;
+
+  @include phone {
+    float: none;
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    height: 300px;
+  }
+}
+@mixin card_image_small {
+  @include image_background;
+
+  background-position: 50%;
+  float: left;
+  height: 120px;
+  margin-right: 20px;
+  width: 100px;
+}
+@mixin card_image_full {
+  @include image_background;
+
+  background-position: 50%;
+  margin-bottom: 10px;
+}
+@mixin card_image_feature {
+  background-color: $gray-4-color;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+@mixin card_no_image {
+  border-bottom: 3px $selected-color solid;
+  margin: 20px 0px 10px;
+  width: 30px;
+}
+@mixin card_icon {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 16px;
+  clear: both;
+  content: "";
+  display: block;
+  height: 16px;
+  position: absolute;
+  width: 16px;
+  float: right;
+}
+@mixin card_icon_short {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 16px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+@mixin card_social_icon {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  fill: #eee;
+  display: inline-block;
+  margin: 0px 5px;
+  height: 40px;
+  width: 40px;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+// Headers
+@mixin card_heading_large  {
+  font-size: 44px;
+  line-height: 46px;
+  @media #{$media-iPhoneLarge} {
+    font-size: ($baseFontSize * 2) + 4;
+    line-height: 1.5;
+  }
+  @media #{$media-iPhoneMedium}, #{$media-phone} {
+    font-size: ($baseFontSize * 2) - 4;
+    line-height: 1.5;
+    height: 90px;
+  }
+}
+@mixin card_heading_feature {
+  @include card_heading_large;
+
+  color: $light-color;
+  margin: 70px auto 30px;
+  position: relative;
+  text-align: center;
+  width: 560px;
+  z-index: 20;
+
+  strong {
+    @include card_heading_large;
+    color: $selected-color;
+    font-weight: bold;
+  }
+
+  @include phone-to-tablet {
+    width: 100%;
+  }
+}
+@mixin card_heading_medium {
+  font-size: 20px;
+  line-height: 26px;
+}
+@mixin card_heading_small {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+}
+@mixin card_heading_short {
+  @include card_heading_small;
+
+  line-height: 60px;
+  text-transform: uppercase;
+  text-align: center;
+}
+@mixin card_category {
+  font-size: 11px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+// Text
+@mixin card_text_large {
+  font-size: 20px;
+  line-height: 30px;
+}
+@mixin card_text_feature {
+  font-size: 20px;
+  line-height: 26px;
+  color: $light-color;
+  margin: auto;
+  font-weight: normal;
+  position: relative;
+  text-align: center;
+  width: 380px;
+  z-index: 20;
+
+  @include phone-to-tablet {
+    width: 100%;
+  }
+}
+@mixin card_text_medium {
+  font-size: 14px;
+  line-height: 20px;
+}
+@mixin card_text_small {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+@mixin card_text_caption {
+  font-size: 11px;
+  line-height: 16px;
+  position: relative;
+}
+@mixin card_text_author {
+  display: inline-block;
+  text-transform: uppercase;
+}
+@mixin card_text_date {
+  display: inline-block;
+  text-transform: uppercase;
+
+  &:before {
+    content: "|";
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@mixin card_youtube_icon {
+  position: relative;
+
+  &:before {
+    background-image: url("../images/icons/youtube.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 25% auto;
+    content: "";
+    display: block;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+    @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
+           width: 50%;
+           left: 25%;
+        }
+  }
+  &:hover:before {
+    opacity: 1;
+  }
+}
+
+
+@mixin card__facebook-icon {
+    @include image_background_social_facebook2;
+    background-position:50% center;
+    background-repeat:no-repeat;
+    background-size:16px auto;
+    clear:both;
+    content:"";
+    display:block;
+    float:right;
+    height:16px;
+    margin-right:20px;
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:16px;
+}

@@ -1,0 +1,487 @@
+/*! Layout Card Style
+-------------------------*/
+
+.card {
+    background-color:#fff;
+    border:1px $border-color solid;
+    border-top:none;
+    color:$base-color;
+    display:block;
+    height:480px;
+    overflow: hidden;
+    margin:0px -1px;
+    padding:20px;
+    position:relative;
+    @include transition(0.3s background-color);
+
+    &.no-image {
+        position:relative;
+
+        .card_content {
+            top:50%;
+            left:50%;
+            width:100%;
+            position:absolute;
+            @include padding(20px);
+            @include transform(translate(-50%, -50%));
+        }
+    }
+
+    &:hover {
+        color:$base-color;
+        background-color:$gray-2-color;
+        @include transition(0s background-color);
+    }
+
+    &:after {
+        clear:both;
+    }
+
+    @include phone {
+        height:auto;
+    }
+
+    &__heading {
+        @include card_heading_small;
+        border:1px $border-color solid;
+        margin:-1px -1px 1px -1px;
+        text-transform:uppercase;
+        text-align:center;
+        height: 100px;
+        overflow: hidden;
+        @include tablet {
+            margin-bottom:0px;
+        }
+    }
+}
+
+/*! Overlay Button */
+.btn_overlay {
+    top:20px;
+    left:20px;
+    width:auto;
+    z-index:99;
+    width:28px;
+    position:absolute;
+    visibility:hidden;
+    @include opacity(0);
+    @include transition((opacity(0), 2s ease-out));
+    background:transparent none repeat scroll 0 0;
+
+    .btnhide {
+        float:left;
+        width:28px;
+        color:#ededed;
+        border:0 none;
+        margin:0px 0px;
+        min-height:28px;
+        max-height:28px;
+        line-height:28px;
+        position:relative;
+        @include border-radius(0px);
+        font-size:($baseFontSize * 1);
+        border:1px solid rgba($black, 0.9);
+        @include transition(all 0.5s ease 0s);
+        background:none repeat scroll 0 0 rgba($black, 0.9);
+
+        &:not(:first-child) {
+            border-top:0px none!important;
+        }
+
+        &:hover, &:active {
+            border:1px solid rgba($black, 0.1);
+            background:none repeat scroll 0 0 rgba($blue, 0.9);
+        }
+
+        .fa {
+            font-size:($baseFontSize * 1) + 2;
+        }
+
+        .fa-thumb-tack {
+            @include transform(rotate(-33deg));
+
+            &::after {
+                left:5%;
+                right:5%;
+                z-index:0;
+                height:6%;
+                bottom:-5%;
+                content:"";
+                position:absolute;
+                @include border-radius(70%);
+                @include transform(scaleY(0.1));
+                @include box-shadow((0 0 6px 6px rgba(0,0,0,0.1), 0 0 15px 10px rgba(0,0,0,0.1), inset 0 0 10px 20px rgba(0,0,0,0.25)));
+            }
+        }
+    }
+}
+
+/*! Overlay Button Tooltips */
+.social-tooltip {
+	z-index:98;
+	color:$white;
+	display:inline;
+	position:relative;
+	font-size:($baseFontSize * 1) - 2;
+	&.selected {
+        background:none repeat scroll 0 0 rgba($blue ,0.95);
+        border-color:rgba($blue ,0.95);
+    }
+	&:hover {
+		color:$white;
+		text-decoration:none;
+
+		&:after {
+			top:3px;
+			left:40px;
+			color:$white;
+			display:block;
+			line-height:1.3;
+			font-weight:400;
+			padding:5px 8px;
+			position:absolute;
+			white-space:nowrap;
+			content:attr(title);
+			@include border-radius(3px);
+			font-size:($baseFontSize * 1) - 2;
+			-webkit-box-shadow:0 0 2px rgba($black ,0.2);
+			@include box-shadow(0 0 2px rgba($black ,0.2));
+			background:none repeat scroll 0 0 rgba($blue ,0.95);
+		}
+
+		&:before {
+            top:11px;
+            left:35px;
+            z-index:1;
+            border:solid;
+            border-color:transparent rgba($blue ,0.95);
+            border-width:5px 5px 5px 0;
+            content:" ";
+            display:block;
+            position:absolute;
+		}
+	}
+}
+
+.card {
+    &:hover, &:focus, &:active {
+        .btn_overlay {
+            visibility:visible;
+            @include opacity(1);
+            @include transition((opacity(1), 2s ease-out));
+        }
+    }
+}
+
+.col-two-thirds, .col-full {
+    .btn_overlay {
+        left:auto;
+        right:20px;
+    }
+
+    .social-tooltip {
+
+        &:hover {
+
+            &:after {
+                left:auto;
+                right:40px;
+            }
+
+            &:before {
+                left:auto;
+                right:35px;
+                border-width:5px 0 5px 5px;
+            }
+        }
+    }
+}
+
+/*! To Overwrote ShareThis Default Icon */
+.st_sharethis_large {
+	.stButton {
+		display:none!important;
+
+		.stLarge {
+			background-image:none!important;
+		}
+	}
+}
+
+
+.col-full {
+
+    .card {
+        &.withImage__content, &.without__image {
+
+            .card__facebook-image, .card__youtube-image, .card__twitter-image, .card__vimeo-image, .card__instagram-image, .card__news-image {
+                display:block;
+                background-color:#bfc3c3;
+                background-position:0 50%;
+                background-repeat:no-repeat;
+                background-size:cover;
+                float:right;
+                height:100%;
+                margin-left:20px;
+                width:65.4%;
+                position:relative;
+
+                @media #{$media-phone}, #{$media-iPhoneMedium} {
+                    width:100%!important;
+                    float:none!important;
+                    height:300px!important;
+                    margin-left:0px !important;
+                    margin-bottom:20px!important;
+                }
+            }
+
+            .card__youtube-image:before, .card__vimeo-image:before {
+                background-image: url("../images/icons/youtube.svg");
+                background-position: 50% center!important;
+                background-repeat: no-repeat;
+                background-size:90px 90px!important;
+                content:"";
+                display:block;
+                height:100%;
+                opacity:0.5;
+                position:absolute;
+                width:100%;
+                @include transition(all);
+            }
+
+            &:hover .card__youtube-image:before, &:hover .card__vimeo-image:before {
+                opacity:1;
+            }
+
+            .withImage_card_content {
+                height:440px;
+                position:relative;
+
+                @media #{$media-phone}, #{$media-iPhoneMedium} {
+                    height:360px;
+                }
+
+                h1 {
+                    margin-bottom:30px;
+                }
+
+                .card__facebook-category, .card__youtube-category, .card__twitter-category, .card__vimeo-category, .card__instagram-category, .card__news-category {
+                    margin-bottom:30px;
+                }
+
+                .card__facebook-icon, .card__youtube-icon, .card__twitter-icon, .card__vimeo-icon, .card__instagram-icon, .card__news-icon {
+                    background-position:50% center;
+                    background-repeat:no-repeat;
+                    background-size:16px auto;
+                    clear:both;
+                    content:"";
+                    display:block;
+                    float:right;
+                    height:16px;
+                    margin-right:0px;
+                    position:absolute;
+                    right:20px;
+                    top:0px;
+                    width:16px;
+
+                    @media #{$media-phone}, #{$media-iPhoneMedium} {
+                        right:0px;
+                        margin-right:0px;
+                    }
+                }
+
+                .card__facebook-icon {
+                    @include image_background_social_facebook2;
+                }
+                .card__youtube-icon {
+                    @include image_background_social_youtube;
+                }
+                .card__twitter-icon {
+                    @include image_background_social_twitter2;
+                }
+                .card__vimeo-icon {
+                    @include image_background_social_vimeo;
+                }
+                .card__instagram-icon {
+                    @include image_background_social_instagram2;
+                }
+                .card__news-icon {
+                    @include image_background_social_news;
+                }
+
+                .card__facebook-caption, .card__youtube-caption, .card__twitter-caption, .card__vimeo-caption, .card__instagram-caption {
+                    position:absolute;
+                    bottom:0px;
+
+                    .card__facebook-author, .card__youtube-author, .card__twitter-author, .card__vimeo-author, .card__instagram-author {
+                        display:inline-block;
+                        text-transform:uppercase;
+                    }
+
+                    .card__facebook-category, .card__facebook-author {
+                        color:color(facebook);
+                    }
+                    .card__youtube-category, .card__youtube-author {
+                        color:color(youtube);
+                    }
+                    .card__twitter-category, .card__twitter-author {
+                        color:color(twitter);
+                    }
+                    .card__vimeo-category, .card__vimeo-author {
+                        color:color(vimeo);
+                    }
+                    .card__instagram-category, .card__instagram-author {
+                        color:color(instagram);
+                    }
+
+                    .card__facebook-date, .card__youtube-date, .card__twitter-date, .card__vimeo-date, .card__instagram-date {
+                        display:inline-block;
+                        text-transform:uppercase;
+
+                        &::before {
+                            content:"|";
+                            margin-left:10px;
+                            margin-right:10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.withImage__content {
+
+            .withImage_card_content {
+                position:relative;
+                width:calc(100% - 65.4%);
+                @include padding-right(20px);
+
+                @media #{$media-phone}, #{$media-iPhoneMedium} {
+                    width:calc(100% - 0px);
+                    @include padding-right(0px);
+                }
+            }
+        }
+
+
+        &.without__image {
+
+            .card__facebook-image, .card__youtube-image, .card__twitter-image, .card__vimeo-image, .card__instagram-image {
+                display:none;
+            }
+
+            .withImage_card_content {
+                position:relative;
+                width:calc(100% - 0px);
+                @include padding-right(0px);
+
+                .card__facebook-icon, .card__youtube-icon, .card__twitter-icon, .card__vimeo-icon, .card__instagram-icon {
+                    right:5px;
+                    margin-right:0px;
+
+                    @media #{$media-phone}, #{$media-iPhoneMedium} {
+                         right:0px;
+                        margin-right:0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.col-full {
+
+    .card {
+        position:relative;
+
+        &.card__news {
+
+            &.withImage__content {
+
+                .card__news-category {
+                    margin-top:0px;
+                    margin-bottom:30px;
+                }
+
+                .card__news-icon {
+                    background-position:50% center;
+                    background-repeat:no-repeat;
+                    background-size:16px auto;
+                    clear:both;
+                    content:"";
+                    display:block;
+                    float:right;
+                    height:16px;
+                    margin-right:0px;
+                    position:absolute;
+                    left:calc(100% - 65.4% - 30px);
+                    top:20px;
+                    width:16px;
+
+                    @media #{$media-phone}, #{$media-iPhoneMedium} {
+                        left:auto;
+                        right:20px;
+                        top:335px;
+                        margin-right:0px;
+                    }
+                }
+                .card__news-icon {
+                    @include image_background_social_news;
+                }
+            }
+
+            &.without__image {
+
+                .card__news-icon {
+                    background-position:50% center;
+                    background-repeat:no-repeat;
+                    background-size:16px auto;
+                    clear:both;
+                    content:"";
+                    display:block;
+                    float:right;
+                    height:16px;
+                    margin-right:0px;
+                    position:absolute;
+                    right:25px;
+                    top:40px;
+                    width:16px;
+
+                    @media #{$media-phone}, #{$media-iPhoneMedium} {
+                        right:20px;
+                        margin-right:0px;
+                    }
+                }
+                .card__news-icon {
+                    @include image_background_social_news;
+                }
+
+                .card__news-caption {
+                    width:100%!important;
+                }
+            }
+        }
+
+        @media #{$media-phone}, #{$media-iPhoneMedium} {
+            &.without__image {
+                height:400px !important;
+            }
+        }
+
+        .withImage_card_content {
+
+            &.social {
+                .card__news-description {
+                    margin-top:90px!important;
+                    overflow:hidden;
+                }
+
+                @media #{$media-phone}, #{$media-iPhoneMedium} {
+                    &.without__image {
+                        margin-top:10px!important;
+                    }
+                }
+            }
+        }
+    }
+}
