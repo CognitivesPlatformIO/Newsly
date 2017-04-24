@@ -183,6 +183,9 @@
                     font-size: ($baseFontSize * 1) + 2 !important;
                     font-weight: 400 !important;
                 }
+                blockquote {
+                    padding: 0 0 0 30px !important;
+                }
                 ul, ol {
                     li {
                         margin-bottom: 15px;

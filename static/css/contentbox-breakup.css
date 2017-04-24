@@ -9,6 +9,12 @@
 	float: left;
 	width: 100%;
 }
+.content_box_page .terms_page .content_area a, .content_box_page .terms_page .content_area li, .content_box_page .terms_page .content_area ol, .content_box_page .terms_page .content_area p, .content_box_page .terms_page .content_area ul, .content_box_page .terms_page .content_area b, .content_box_page .terms_page .content_area strong {
+	font-size: inherit !important;
+}
+.content_box_page .content-wrap.terms_page {
+	padding: 15px 10px 0px !important;
+}
 .content_box_page .is-section {
     position: relative !important;
     float: left !important;
