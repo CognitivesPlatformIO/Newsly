@@ -42,7 +42,7 @@
 		{% set isPage = 'content_box_page' in _Page.getBodyClass() %}
 			
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1493047403349" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1493048225328" type="text/css" media="all">
         {% else %}			
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.fancybox/source/jquery.fancybox.css" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.noty-2.3.8/demo/animate.css" />
@@ -62,7 +62,7 @@
         {% set themeColors = networkData['styling']['colours'] %}
         <style type="text/css">
         {% if primaryFont != "" %}
-            body, .body, p, .article_main .article_wrapper .article-content-section .content-area article, .article_main .article_wrapper .article-content-section .content-area aside, .article_main .article_wrapper .article-content-section .content-area blockquote, .article_main .article_wrapper .article-content-section .content-area div, .article_main .article_wrapper .article-content-section .content-area figure, .article_main .article_wrapper .article-content-section .content-area h1, .article_main .article_wrapper .article-content-section .content-area h2, .article_main .article_wrapper .article-content-section .content-area h3, .article_main .article_wrapper .article-content-section .content-area h4, .article_main .article_wrapper .article-content-section .content-area h5, .article_main .article_wrapper .article-content-section .content-area h6, .article_main .article_wrapper .article-content-section .content-area ol, .article_main .article_wrapper .article-content-section .content-area p, .article_main .article_wrapper .article-content-section .content-area section, .article_main .article_wrapper .article-content-section .content-area span, .article_main .article_wrapper .article-content-section .content-area ul, .terms_page .content_area h1, .terms_page .content_area h2, .terms_page .content_area h3, .terms_page .content_area h4, .terms_page .content_area h5, .terms_page .content_area a, .terms_page .content_area li, .terms_page .content_area ol, .terms_page .content_area p, .terms_page .content_area ul {
+            body, .body, p, .terms_page .content_area h1, .terms_page .content_area h2, .terms_page .content_area h3, .terms_page .content_area h4, .terms_page .content_area h5, .terms_page .content_area a, .terms_page .content_area li, .terms_page .content_area ol, .terms_page .content_area p, .terms_page .content_area ul {
                 font-family: "{{primaryFont | replace({'+': ' '})}}" !important;
             }
         {% endif %}

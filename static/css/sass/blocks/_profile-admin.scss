@@ -1026,37 +1026,37 @@ button {
         h1, h2, h3, h4, h5 {
             font-weight:400 !important;
             margin-bottom:20px !important;
-            font-family:$base-font-family !important;
+            font-family:$base-font-family;
             line-height: 1.4 !important;
         }
         h1 {
-            font-size: ($baseFontSize * 3) - 6 !important;
+            font-size: ($baseFontSize * 3) - 6;
             @media #{$media-ipadPortrait} {
-                font-size: ($baseFontSize * 2) - 2 !important;
+                font-size: ($baseFontSize * 2) - 2;
             }
         }
         h2 {
-            font-size: ($baseFontSize * 3) - 9 !important;
+            font-size: ($baseFontSize * 3) - 9;
             @media #{$media-ipadPortrait} {
-                font-size: ($baseFontSize * 2) - 4 !important;
+                font-size: ($baseFontSize * 2) - 4;
             }
         }
         h3 {
-            font-size: ($baseFontSize * 2) + 2 !important;
+            font-size: ($baseFontSize * 2) + 2;
             @media #{$media-ipadPortrait} {
-                font-size: ($baseFontSize * 2) - 6 !important;
+                font-size: ($baseFontSize * 2) - 6;
             }
         }
         h4 {
-            font-size: ($baseFontSize * 2) + 0 !important;
+            font-size: ($baseFontSize * 2) + 0;
             @media #{$media-ipadPortrait} {
-                font-size: ($baseFontSize * 1) + 6 !important;
+                font-size: ($baseFontSize * 1) + 6;
             }
         }
         h5 {
-            font-size: ($baseFontSize * 2) - 2 !important;
+            font-size: ($baseFontSize * 2) - 2;
             @media #{$media-ipadPortrait} {
-                font-size: ($baseFontSize * 1) + 4 !important;
+                font-size: ($baseFontSize * 1) + 4;
             }
         }
 
@@ -1064,10 +1064,10 @@ button {
             font-weight:300;
             margin-bottom:20px;
             font-family:$base-font-family;
-            font-size:($baseFontSize * 1) + 2 !important;
+            font-size:($baseFontSize * 1) + 2;
         }
         strong, b {
-            font-size:($baseFontSize * 1) + 2 !important;
+            font-size:($baseFontSize * 1) + 2;
         }
     }
 }
