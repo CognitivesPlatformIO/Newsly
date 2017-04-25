@@ -21,7 +21,6 @@
     width: 100% !important;
     background-color: #ffffff;
 }
-
 .is-wrapper > div.is-section-20 {
     height: 20vh !important;
 }
@@ -70,6 +69,9 @@
 }
 .content_box_page .content-wrap.terms_page {
     padding: 0px;
+}
+.content_box_page .is-wrapper .is-light-text * {
+	color: inherit;
 }
 /* .content_box_page .is-section.is-section-100 {
     padding: 85px 0;
