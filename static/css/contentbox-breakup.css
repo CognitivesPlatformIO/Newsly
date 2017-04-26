@@ -73,6 +73,22 @@
 .content_box_page .is-wrapper .is-light-text * {
 	color: inherit;
 }
+.content_box_page .btn-primary, .content_box_page .is-btn-ghost2 {
+    border-color: #efefef;
+    background: #efefef;   
+}
+.content_box_page .btn-primary:hover, .content_box_page .btn-primary:focus, .content_box_page .is-btn-ghost2:hover, .content_box_page .is-btn-ghost2:focus {
+    border-color: #efefef;
+    background: transparent;
+}
+.content_box_page .is-btn-ghost1 {
+    border-color: #efefef;
+    background: transparent;
+}
+.content_box_page .is-btn-ghost1:hover, .content_box_page .is-btn-ghost1:focus {
+    border-color: #efefef;
+    background: #efefef;
+}
 /* .content_box_page .is-section.is-section-100 {
     padding: 85px 0;
 }
