@@ -1,0 +1,149 @@
+:focus {
+  outline: none;
+}
+::selection {
+  background: $gray-4-color;
+  color: $light-color;
+}
+::-moz-selection {
+  background: $hover-color;
+  color: $light-color;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+}
+
+.body {
+  @include base_font;
+
+  background-color: $light-color;
+  font-size: 14px;
+  line-height: 22px;
+  min-height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 22px;
+}
+
+h1, .h1 {
+  color: $header-color;
+  font-family: $header-font-family;
+  font-size: 46px;
+  line-height: 46px;
+  font-weight: bold;
+}
+
+h2, .h2 {
+  color: $header-color;
+  font-family: $header-font-family;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 40px;
+  @media #{$media-iPhoneMedium}, #{$media-phone} {
+    font-size: ($baseFontSize * 2) - 4 !important;
+    line-height: 1.5;
+
+    }
+
+
+}
+
+h3, .h3 {
+  color: $header-color;
+  font-family: $header-font-family;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+h4, .h4 {
+  color: $header-color;
+  font-family: $header-font-family;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 34px;
+}
+
+h5, .h5 {
+}
+
+.img {
+}
+
+strong, b {
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 27px;
+}
+em {
+  font-weight: 700;
+}
+
+ul {
+  font-size: 14px;
+  line-height: 22px;
+  padding-left: 20px;
+  margin: 0px 0px 30px;
+}
+
+hr {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border: none;
+  clear: both;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
+tr {
+  vertical-align: top;
+}
+
+td {
+  padding: 0px 10px 0px 0px;
+}
+
+
+a {
+  &, &:link, &:visited, &:active {
+    color: $selected-color;
+    transition: color 0.5s;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $hover-color;
+    transition: color 0s;
+    text-decoration: none;
+  }
+  &:focus {
+  }
+  &:hover:active {
+    color: $visited-color;
+  }
+  img {
+    border: 0px;
+  }
+}
+
+.clear {
+  clear: both;
+}
+.col-centered {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,460 @@
+.col-third-short {
+  .card {
+    height: 160px;
+    padding-right: 20px;
+
+    &__heading {
+      @include card_heading_short;
+    }
+
+    // News
+    &__news {
+      &-image {
+        @include card_image_small;
+      }
+      &-no-image {
+        @include card_no_image;
+        margin-top: 0px;
+      }
+
+      &-icon {
+        @include card_icon_short;
+
+        background-image: url("../images/icons/category-news.svg");
+      }
+      &-category {
+        @include card_category;
+
+        margin-top: 0px;
+      }
+      &-heading {
+        @include card_heading_small;
+
+        height: 48px;
+        margin-bottom: 24px;
+      }
+      &-description {
+        display: none;
+      }
+
+      &-caption {
+        @include card_text_caption;
+      }
+      &-by {
+        display: none;
+      }
+      &-author {
+        display: none;
+      }
+      &-date {
+        @include card_text_date;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    // Categories
+    &__facebook {
+      &-image {
+        @include card_image_small;
+      }
+      &-icon {
+        @include card_icon_short;
+        @include image_background_social_facebook2;
+        right: 25px;
+        top: 25px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(facebook);
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      &-description {
+        @include card_text_medium;
+
+        color: $base-color;
+        height: 40px;
+        margin-bottom: 20px;
+      }
+      &-by {
+        display: none;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        display: none;
+      }
+      &-date {
+        &:before {
+          display: none;
+        }
+
+        @include card_text_date;
+      }
+    }
+
+    &__instagram {
+      &-image {
+        @include card_image_small;
+      }
+      &-icon {
+        @include card_icon_short;
+        @include image_background_social_instagram2;
+        right: 25px;
+        top: 25px;
+      }
+      &-tags {
+        @include card_text_medium;
+
+        color: color(twitter);
+        height: 40px;
+        margin-top: 0px;
+      }
+      &-name {
+        display: none;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: color(twitter);
+        margin-bottom: 10px;
+      }
+      &-author {
+        display: none;
+      }
+    }
+
+    &__twitter {
+      &-category {
+        @include card_category;
+
+        color: color(twitter);
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      &-image {
+        @include card_image_small;
+      }
+      &-no-image {
+        @include card_no_image;
+        margin-top: 0px;
+      }
+      &-icon {
+          &-no-image {
+              @include card_icon;
+              @include image_background_social_twitter2;
+              right: 25px;
+              top: 25px;
+          }
+        @include card_icon_short;
+        @include image_background_social_twitter2;
+        right: 25px;
+        top: 25px;
+      }
+      &-name {
+        display: none;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: color(twitter);
+        margin-bottom: 5px;
+      }
+      &-description {
+        @include card_text_medium;
+
+        color: $base-color;
+        height: 60px;
+        margin-top: 0px;
+        margin-bottom: 14px;
+
+        &--full {
+          height: 52px;
+          margin-top: 5px;
+        }
+      }
+      &-by {
+        display: none;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        display: none;
+      }
+      &-date {
+        &:before {
+          display: none;
+        }
+        @include card_text_date;
+      }
+    }
+
+    &__youtube {
+      &-image {
+        @include card_image_small;
+      }
+      &-icon {
+        @include card_icon_short;
+        @include image_background_social_youtube;
+        right: 25px;
+        top: 25px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(youtube);
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      &-heading {
+        @include card_heading_small;
+
+        height: 48px;
+        margin-top: 0px;
+        margin-bottom: 24px;
+      }
+      &-description {
+        display: none;
+      }
+      &-sub_heading {
+        @include card_text_small;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-by {
+        display: none;
+      }
+      &-author {
+        display: none;
+      }
+      &-date {
+        &:before {
+          display: none;
+        }
+        @include card_text_date;
+      }
+    }
+
+    &__vimeo {
+      &-image {
+        @include card_image_small;
+      }
+      &-icon {
+        @include card_icon_short;
+        @include image_background_social_vimeo;
+        right: 25px;
+        top: 25px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(vimeo);
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      &-description {
+        @include card_text_medium;
+
+        color: $base-color;
+        height: 40px;
+        margin-bottom: 20px;
+      }
+      &-by {
+        display: none;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        display: none;
+      }
+      &-date {
+        &:before {
+          display: none;
+        }
+
+        @include card_text_date;
+      }
+    }
+  }
+}
+
+
+
+.card__instagram-category {
+    color:color(instagram)!important;
+}
+.card__youtube-category {
+    color:color(youtube)!important;
+}
+.card__twitter-category {
+    color:color(twitter)!important;
+}
+.card__facebook-category {
+    color:color(facebook)!important;
+}
+.card__vimeo-category {
+    color:color(vimeo)!important;
+}
+
+[class*="-category"] {
+    text-transform:uppercase!important;
+}
+[class*="-description"] {
+    overflow:hidden!important;
+}
+
+.col-third-short {
+    .card {
+
+        .card__news-icon-share {
+            right:0;
+            bottom:0;
+            left:auto;
+            clear:both;
+            content:"";
+            width:16px;
+            height:16px;
+            float:right;
+            position:absolute;
+            @include opacity(0.5);
+            display:block!important;
+            background-image:url("../images/icons/social-share.svg");
+            background-position:50% center;
+            background-repeat:no-repeat;
+            background-size:16px auto;
+        }
+
+        [class*="-category"] {
+            margin-top:0px;
+            line-height:16px;
+            font-size:11px!important;
+            text-transform:uppercase;
+            margin-bottom:10px!important;
+        }
+
+        [class*="-date"] {
+            text-transform:uppercase;
+            font-size:11px!important;
+        }
+
+        &.without__image {
+            [class*="-image"] {
+                display:none;
+            }
+
+            .withImage_card_content.social {
+                [class*="-description"] {
+                    height:60px;
+                    font-size:14px;
+                    line-height:20px;
+                    display:block!important;
+                    overflow:hidden!important;
+                }
+            }
+        }
+
+        &.only__image {
+            [class*="-image"] {
+                width:100%;
+                height:100%;
+                @include background-size(cover);
+                background-position:center;
+
+                @media #{$media-ipadPortrait} {
+                    width:100%;
+                    height:100%;
+                }
+            }
+
+            .content_section {
+                top:0;
+                left:0;
+                z-index:1;
+                margin-top:20px;
+                margin-left:20px;
+                position:absolute;
+                @include padding(15px);
+                width:calc(100% - 40px);
+                height:calc(100% - 40px);
+                background:rgba($black,0.5);
+
+                [class*="-icon"] {
+                    top:13px;
+                    right:14px;
+                }
+
+                [class*="-icon-share"] {
+                    right:0;
+                    bottom:0;
+                    top:auto;
+                }
+
+                .card__youtube-icon {
+                    background-image:url("../images/icons/social-youtube.svg");
+                }
+                .card__facebook-icon {
+                    background-image:url("../images/icons/social-facebook.svg");
+                }
+                .card__twitter-icon {
+                    background-image:url("../images/icons/social-twitter.svg");
+                }
+                .card__instagram-icon {
+                    background-image:url("../images/icons/social-instagram.svg");
+                }
+                .card__vimeo-icon {
+                    background-image:url("../images/icons/social-vimeo.svg");
+                }
+                .card__news-icon {
+                    background-image:url("../images/icons/social-category-news.svg");
+                }
+
+                [class*="-category"], .card__news-category {
+                    margin-bottom:7px!important;
+                }
+
+                [class*="-description"], .card__news-heading {
+                    height:40px;
+                    font-size:14px;
+                    line-height:20px;
+                    display:block!important;
+                    overflow:hidden!important;
+                    margin-bottom:10px!important;
+                    color:$gray-4-color!important;
+                }
+                [class*="-date"], .card__news-category {
+                    color:$white!important;
+                }
+
+                .card__news-description {
+                    display:none!important;
+                }
+
+                .card__news-heading {
+                    font-size:16px;
+                    margin-top:0px!important;
+                }
+            }
+        }
+    }
+
+}

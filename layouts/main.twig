@@ -42,17 +42,16 @@
 		{% set isPage = 'content_box_page' in _Page.getBodyClass() %}
 			
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1491992552544" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1493204997341" type="text/css" media="all">
         {% else %}			
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.fancybox/source/jquery.fancybox.css" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.noty-2.3.8/demo/animate.css" />
             <link type="text/css" rel="stylesheet" href="{{_AppHelper.getAssetsSDKPath()}}/js/media-player/mediaelementplayer.css" />
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/index.css" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/index.min.css" type="text/css" media="all" />
             <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/contentbox-breakup.css" type="text/css" media="all" />
         {% endif %}
         
         {% if isPage %}
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/assets/minimalist-basic/content-bootstrap.css" rel="stylesheet" type="text/css" />
 
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/box/box.css" rel="stylesheet" type="text/css" />
@@ -63,7 +62,7 @@
         {% set themeColors = networkData['styling']['colours'] %}
         <style type="text/css">
         {% if primaryFont != "" %}
-            body, .body, p {
+            body, .body, p, .terms_page .content_area h1, .terms_page .content_area h2, .terms_page .content_area h3, .terms_page .content_area h4, .terms_page .content_area h5, .terms_page .content_area a, .terms_page .content_area li, .terms_page .content_area ol, .terms_page .content_area p, .terms_page .content_area ul {
                 font-family: "{{primaryFont | replace({'+': ' '})}}" !important;
             }
         {% endif %}
@@ -196,14 +195,16 @@
                         <a class="header__heading-logo" href="{{ logoUrl }}">{% if logo is not empty %}<img src="{{logo}}" />{% endif %}</a>
                         
                     </div>
-                    <div class="header__heading--right">
-                       <a href="javascript:void(0)" class="header__heading-link" id="login">Sign In</a>
-                    </div>
+                    {% if not _Network.isNetworkClosed(networkData)%}
+                        <div class="header__heading--right">
+                            <a href="javascript:void(0)" class="header__heading-link" id="login">Sign In</a>
+                        </div>
+                    {% endif %}
                     <a href="javscript:void(0)" class="header__heading-link header__heading-link--profile {% if _User.isGuest()%} user__login {% endif %}" id="profile"
                     {% if profileImage != ''%} style="background-image:url({{profileImage}})" {% endif %}
                     {% if _User.isGuest()%} style="background-image: none;" {% endif %}>
-                        {% if _User.isGuest()%}
-                            {{ not _Network.isNetworkClosed(network) ? 'Login' : 'Signup / Login' }}
+                        {% if _User.isGuest() and not _Network.isNetworkClosed(networkData)%}
+                            Signup / Login
                         {% endif %}
                     </a>
                     {{ this.render('partials/_profile.twig', {network : networkData}) | raw }}
@@ -226,7 +227,7 @@
             </div>
         </div>
         {{ this.render('../partials/social-share.twig') | raw }}
-
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         {{ this.endBody() }}
     </body>
     {{ this.endPage() }}

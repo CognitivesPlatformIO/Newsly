@@ -1,0 +1,82 @@
+// Colors
+$white:				#ffffff;
+$light-color:      	#f7f7f7;
+$dark-color:       	#212427;
+$black:             #000000;
+$blue:              #46a5fc;
+$transparent:		rgba(0,0,0,0);
+
+$gray-2-color:     	#efefef;
+$gray-3-color:     	#dfe0e1;
+$gray-4-color:     	#bfc3c3; 
+$grey:				#808080;
+
+$border-color:     	#e0e0e0;
+$base-color:       	#4B4B4B;
+$header-color:     	#4B4B4B;
+$error-color:      	#e73d4a;
+$success-color:    	#17aa1c;
+$warning:           #fecd50;
+
+$selected-color:   	#212427;
+$hover-color:      	#303030;
+$visited-color:    	#121212;
+$link-color:       	#212427;
+$link-hover-color: 	#303030;
+
+
+// Sections
+$sections: (
+	local:    			#e0e0e0,
+	regional: 			#e0e0e0,
+	rural:    			#e0e0e0,
+	national: 			#e0e0e0,
+);
+
+
+// Cards
+$cards: (
+	article:     		#fece0f,
+	facebook:    		#3d5c95,
+	google-plus: 		#f37b65,
+	instagram:   		#9f1e97,
+	linkedin:    		#0077b5,
+	twitter:     		#2eb1eb,
+	youtube:     		#e34336,
+    vimeo:       		#00b3ec,
+);
+
+@function color($card_type) {
+  	@return map-get($cards, $card_type);
+}
+
+
+$baseFontSize:			14px; /* ($baseFontSize * 1) + 0px; */
+$center:				center;
+
+
+// Grids
+$grid-gutter-width: 	0px;
+
+// Dimensions
+$screen-xs: 768px;  // Mobile
+$screen-sm: 768px;  // Tablet
+$screen-md: 1170px; // Desktop
+$screen-lg: 1170px; // Large desktop
+
+
+
+// Fonts
+$base-font-family: "Montserrat", Helvetica, Arial, sans-serif !default;
+$header-font-family: $base-font-family;
+$iconfont:				FontAwesome !default;
+
+
+$media-desktop: "screen and (max-width: 1194px)";
+$media-ipadLandscape: "screen and (min-width : 992px) and (max-width : 1024px)";
+$media-smallDevices: "screen and (min-width : 1025px) and (max-width : 1150px)";
+$media-ipadPortrait: "screen and (max-width :992px)";
+$media-phone: "screen and (min-width : 200px) and (max-width : 480px)";
+$media-iPhoneMedium: "screen and (min-width : 481px) and (max-width : 667px)";
+$media-iPhoneLarge: "screen and (min-width : 668px) and (max-width : 767px)";
+$media-iPad: "screen and (min-width : 768px) and (max-width : 992px)";

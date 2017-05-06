@@ -1,0 +1,129 @@
+.sub_header {
+  background-color: $light-color;
+
+  &__container {
+    @extend .container;
+  }
+  &_section {
+    display: table;
+    width: 100%;
+    @include padding(30px 0);
+    @include phone-to-tablet {
+        padding: 20px 10px;
+    }
+  }
+  &__heading {
+    color: $base-color;
+    display: inline-block;
+    font-size: 20px;
+    text-transform: uppercase;
+    @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
+           text-align: center;
+           display: block;
+        }
+    strong {
+      &:before {
+        content: "|";
+        display: inline-block;
+        margin: 0px 16px;
+      }
+      color: $gray-4-color;
+      font-size: 20px;
+
+    }
+
+    // Generate modifier classes for each category section
+    @each $section in $sections {
+      $name:  nth($section, 1);
+      $color: nth($section, 2);
+
+      &--#{$name} {
+        &, &:link, &:visited, &:active {
+          color: $color;
+        }
+      }
+    }
+
+  }
+  &__breadcrumb {
+      @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
+          text-align: center;
+      }
+    &-link {
+      &, &:link, &:visited, &:active {
+        color: $base-color;
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+      &:after {
+        content: "/";
+        margin: 0px 10px;
+        color: $base-color;
+      }
+      &:last-child {
+        &:after {
+          content: "";
+        }
+      }
+    }
+    /* @include phone-to-tablet {
+      display: none;
+  } */
+  }
+  &__button {
+    &, &:link, &:visited, &:active {
+      background-color: $selected-color;
+      color: #fff;
+      font-size: 11px;
+      padding: 0px 60px;
+      line-height: 40px;
+      text-transform: uppercase;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      color: $base-color;
+    }
+
+    // Generate modifier classes for each category section
+    @each $section in $sections {
+      $name:  nth($section, 1);
+      $color: nth($section, 2);
+
+      &--#{$name} {
+        &, &:link, &:visited, &:active {
+          background-color: $color;
+        }
+      }
+    }
+
+    @include phone-to-tablet {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+  &__social {
+  }
+
+  &--left {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include phone-to-tablet {
+      display: block;
+    }
+  }
+  &--right {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+    @include phone-to-tablet {
+      display: block;
+    }
+    @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
+           text-align: center;
+        }
+  }
+}

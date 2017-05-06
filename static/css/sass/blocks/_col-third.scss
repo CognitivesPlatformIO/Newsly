@@ -1,0 +1,315 @@
+.col-third {
+  .card {
+
+    // News
+    &__news {
+      &-image {
+        @include card_image_full;
+
+        height: 200px;
+      }
+      &-icon-share {
+        @include card_icon;
+        @include image_background_social_share;
+        opacity: 0.5;
+        top: 0px;
+        right: 5px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &-category {
+        @include card_category;
+
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-heading {
+        @include card_heading_small;
+      }
+      &-description {
+        @include card_text_medium;
+
+        height: 60px;
+        margin-bottom: 36px;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+    // Categories
+    &__facebook {
+      &-image {
+        @include card_image_full;
+
+        height: 200px;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_facebook2;
+        top: 240px;
+        right: 25px;
+      }
+      &-social-icons {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 45px;
+        width: 100%;
+        text-align: center;
+
+        &--like {
+          @include card_social_icon;
+
+          background-image: url("../images/icons/facebook-like.png");
+        }
+        &--comment {
+          @include card_social_icon;
+
+          background-image: url("../images/icons/facebook-comment.png");
+        }
+        &--share {
+          @include card_social_icon;
+
+          background-image: url("../images/icons/facebook-share.png");
+        }
+      }
+      &-category {
+        @include card_category;
+
+        color: color(facebook);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-heading {
+        @include card_heading_small;
+
+        margin-top: 10px;
+      }
+      &-description {
+        @include card_text_medium;
+        height: 60px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+
+        color: color(facebook);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+    &__instagram {
+      &-image {
+        @include card_image_full;
+
+        height: 300px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(instagram);
+        margin-top: 20px;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_instagram;
+        top: 240px;
+        right: 25px;
+
+        @include tablet {
+          top: 280px;
+        }
+      }
+      &-tags {
+        @include card_text_large;
+
+        color: color(twitter);
+        height: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: $selected-color;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+        color: color(twitter);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+    &__twitter {
+      &-image {
+        @include card_image_full;
+
+        height: 200px;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_twitter2;
+        top: 240px;
+        right: 25px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(twitter);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-name {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      &-username {
+        @include card_text_caption;
+
+        color: $selected-color;
+        margin-bottom: 10px;
+      }
+      &-description {
+        @include card_text_large;
+
+        height: 120px;
+        margin-bottom: 38px;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+        color: color(twitter);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+    &__youtube {
+      &-image {
+        @include card_youtube_icon;
+        @include card_image_full;
+
+        height: 200px;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_youtube;
+        top: 240px;
+        right: 25px;
+      }
+      &-category {
+        @include card_category;
+
+        color: color(youtube);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-heading {
+        @include card_heading_medium;
+      }
+      &-description {
+        @include card_text_medium;
+
+        height: 60px;
+        margin-bottom: 34px;
+      }
+      &-sub_heading {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+
+        color: color(youtube);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+	&__vimeo {
+      &-image {
+        @include card_youtube_icon;
+        @include card_image_full;
+        height: 200px;
+      }
+      &-icon {
+        @include card_icon;
+        @include image_background_social_vimeo;
+        top: 240px;
+        right: 25px;
+      }
+      &-category {
+        @include card_category;
+        color: color(vimeo);
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      &-heading {
+        @include card_heading_medium;
+      }
+      &-description {
+        @include card_text_medium;
+        height: 60px;
+        margin-bottom: 34px;
+      }
+      &-sub_heading {
+        @include card_text_small;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      &-caption {
+        @include card_text_caption;
+      }
+      &-author {
+        @include card_text_author;
+        color: color(vimeo);
+      }
+      &-date {
+        @include card_text_date;
+      }
+    }
+
+  }
+}

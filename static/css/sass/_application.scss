@@ -1,0 +1,138 @@
+.simplemodal-container {
+  right: 0px;
+}
+
+.align {
+  &__center {
+    text-align: center;
+  }
+}
+
+.login-form {
+  @extend .container;
+  margin-top: 100px;
+  background-color: #fff;
+  display: none;
+  width: $screen-tablet;
+
+  &__col-half {
+    @extend .col-half;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  &__col-full {
+    @extend .col-full;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.social {
+  &__button {
+    background-position: 40px 50%;
+    background-repeat: no-repeat;
+    background-size: auto 20px;
+    color: #fff;
+    display: block;
+    line-height: 60px;
+    margin-bottom: 40px;
+    padding: 0px 30px 0px 100px;
+    text-align: left;
+    text-transform: uppercase;
+
+    &, &:link, &:visited, &:active {
+      color: #fff;
+    }
+
+    &--facebook {
+      background-color: color(facebook);
+      background-image: url("../images/icons/social-facebook.svg");
+    }
+    &--linkedin {
+      background-color: color(linkedin);
+      background-image: url("../images/icons/social-linkedin.svg"); 
+    }
+    &--twitter {
+      background-color: color(twitter);
+      background-image: url("../images/icons/social-twitter.svg");
+    }
+    &--google-plus {
+      background-color: color(google-plus);
+      background-image: url("../images/icons/social-google-plus.svg");
+    }
+
+  }
+}
+
+.tabs {
+  &__navigation {
+    display: table;
+    width: 100%;
+
+    &-link {
+      &, &:link, &:visited, &:active {
+        background-color: $selected-color;
+        color: #fff;
+        display: table-cell;
+        line-height: 50px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 50%;
+      }
+
+      &:hover {
+        color: $base-color;
+      }
+
+      &--selected {
+        &, &:link, &:visited, &:active {
+          background-color: #fff;
+          color: $base-color;
+        }
+
+        &:hover {
+        }
+      }
+    }
+  }
+  &__contents {
+  }
+  &__content {
+    @extend .row;
+    padding: 100px 20px 50px;
+  }
+}
+
+.simplemodal {
+  &-container {
+  }
+  &-overlay {
+    background: $base-color;
+    background: #000;
+    transition: opacity 0.1s;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-close {
+    background-image: url("../images/close.svg");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    display: block;
+    height: 50px;
+    margin-top: 100px;
+    opacity: 0.5;
+    position: absolute;
+    right: -60px;
+    top: 0px;
+    width: 50px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+}
