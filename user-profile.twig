@@ -1,5 +1,6 @@
 {{ set(this, 'title', 'User Profile') }}
 
+{% set networkData = _Network.getNetworkData() %}
 {% set profileImage =_Media.getMediaUrl(userDetails.media, 500, 500, {crop: 'thumb', gravity: 'face', type:'user'} )%}
 {{this.registerJs("$('.loginModal').loginModal({});")}}
 
@@ -14,10 +15,10 @@
                     <img src="{{profileImage}}" class="img-responsive">
                     <div class="inner-descr">
                         <h4 class="user-name text-center">{{Html.encode(userDetails.firstname)}} {{Html.encode(userDetails.lastname)}}</h4>
-                        {% if _User.isGuest() %}
+                        {% if _User.isGuest() and not _Network.isNetworkClosed(networkData) %}
                             <a href="javascript:void(0)" class="button green button-block forceLoginModal"><i class="fa fa-star"></i>Follow</a>
                         {% endif %}
-                        {% if not _User.isGuest() and _User.getId() != userDetails.id %}
+                        {% if not _User.isGuest() and _User.getId() != userDetails.id and not _Network.isNetworkClosed(networkData) %}
                             {% set isUserFollowing = _User.isUserFollowing('user', userDetails.id)  %}
                             <a href="javascript:void(0)" class="button green button-block FollowProfileUser" data-guid="{{userDetails.guid}}" data-status="{% if isUserFollowing == 'TRUE' %}unfollow{% else %} follow {% endif %}"><i class="fa fa-star"></i>{% if isUserFollowing == 'TRUE' %} Unfollow {% else %} Follow {% endif %}</a>
                         {% endif %}
@@ -46,11 +47,11 @@
             <!-- //End Recent Articles -->
 
             <!-- Begin Following -->
-            {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings}) | raw }}
+            {{this.render('partials/user-profile/_user_following.twig', {myBlogs : myBlogs, myFollowings: myFollowings, network: networkData}) | raw }}
             <!-- //End Following -->
 
             <!-- Begin Followed By -->
-            {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers}) | raw }}
+            {{this.render('partials/user-profile/_user_followed_by.twig', {myFollowers : myFollowers, network: networkData}) | raw }}
             <!-- //End Followed By -->
 
         </div>
