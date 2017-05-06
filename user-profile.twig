@@ -43,7 +43,7 @@
             <!-- //End My Blogs -->
 
             <!-- Begin Recent Articles -->
-            {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles}) | raw }}
+            {{this.render('partials/user-profile/_recent_articles.twig', {myArticles : myArticles, network: networkData}) | raw }}
             <!-- //End Recent Articles -->
 
             <!-- Begin Following -->
