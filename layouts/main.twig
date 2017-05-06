@@ -38,8 +38,8 @@
         <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
         <link rel="canonical" href="http://{{networkData.defaultDomain['domain']}}" itemprop="url">
         
-		<!--[if lte IE 8]><script type="text/javascript" src="{{networkData.templatePath}}/static/js/ie/ie.js"></script><![endif]-->
-		{% set isPage = 'content_box_page' in _Page.getBodyClass() %}
+        <!--[if lte IE 8]><script type="text/javascript" src="{{networkData.templatePath}}/static/js/ie/ie.js"></script><![endif]-->
+        {% set isPage = 'content_box_page' in _Page.getBodyClass() and 'page-contact-us' not in _Page.getBodyClass() %}
 			
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
             <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1493204997341" type="text/css" media="all">
