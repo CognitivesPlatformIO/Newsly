@@ -3,14 +3,7 @@
 {{this.registerJs("ArticleController.view();")}}
 
 {% set network = _Network.getNetworkData() %}
-{% set status = 'follow' %}
-{% set text = 'Follow +' %}
-{% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
-    {% set status = 'unfollow' %}
-    {% set text = 'Following -' %}
-{% endif %}
 {% set placeholder = network.templatePath~'/static/images/placeholder/placeholder.svg' %}
-
 
 {% set publisher = {height: 60, width: 600, name: network.title, logo: network.templatePath~'/static/images/themeLogo.svg'} %}
 {% if network.logoMedia | length > 0 %}
@@ -25,31 +18,39 @@
                         <a href="{{article.blog['url']}}" class="sub_header__heading">
                             {{article.label}}
                         </a>
-                            <div class="sub_header__breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{_AppHelper.getBaseUrl()}}" class="sub_header__breadcrumb-link">Home
-                                    <meta itemprop="url" content="{{_AppHelper.getBaseUrl()}}"/>
-                                    <meta itemprop="name" content="Home" />
-                                    <meta itemprop="position" content="1" />
-                                </a>
-                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.blog['url']}}" class="sub_header__breadcrumb-link">{{article.blog['title']}}
-                                    <meta itemprop="url" content="{{article.blog['url']}}"/>
-                                    <meta itemprop="name" content="{{article.blog['title']}}" />
-                                    <meta itemprop="position" content="2" />
-                                </a>
-                                <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.url}}" class="sub_header__breadcrumb-link">{{article.title}}
-                                    <meta itemprop="url" content="{{article.url}}"/>
-                                    <meta itemprop="name" content="{{article.title}}" />
-                                    <meta itemprop="position" content="3" />
-                                </a>
-                            </div>
+                        <div class="sub_header__breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                            <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{_AppHelper.getBaseUrl()}}" class="sub_header__breadcrumb-link">Home
+                                <meta itemprop="url" content="{{_AppHelper.getBaseUrl()}}"/>
+                                <meta itemprop="name" content="Home" />
+                                <meta itemprop="position" content="1" />
+                            </a>
+                            <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.blog['url']}}" class="sub_header__breadcrumb-link">{{article.blog['title']}}
+                                <meta itemprop="url" content="{{article.blog['url']}}"/>
+                                <meta itemprop="name" content="{{article.blog['title']}}" />
+                                <meta itemprop="position" content="2" />
+                            </a>
+                            <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" href="{{article.url}}" class="sub_header__breadcrumb-link">{{article.title}}
+                                <meta itemprop="url" content="{{article.url}}"/>
+                                <meta itemprop="name" content="{{article.title}}" />
+                                <meta itemprop="position" content="3" />
+                            </a>
+                        </div>
                     </div>
-                    <div class="sub_header--right">
-                        {% if _User.isGuest() %}
-                        <a href="javascript:void(0)" class="sub_header__button forceLoginModal">Follow +</a>
-                        {% else %}
-                            <a href="javascript:void(0)" class="sub_header__button followArticleBtn" data-guid="{{article.blog['guid']}}" data-status="{{status}}">{{text}}</a>
-                        {% endif%}
-                    </div>
+                    {% if not _Network.isNetworkClosed(network)%}
+                        {% set status = 'follow' %}
+                        {% set text = 'Follow +' %}
+                        {% if not _User.isGuset() and _User.isUserFollowing('blog', article.blog['id'])%}
+                            {% set status = 'unfollow' %}
+                            {% set text = 'Following -' %}
+                        {% endif %}
+                        <div class="sub_header--right">
+                            {% if _User.isGuest() %}
+                                <a href="javascript:void(0)" class="sub_header__button forceLoginModal">Follow +</a>
+                            {% else %}
+                                <a href="javascript:void(0)" class="sub_header__button followArticleBtn" data-guid="{{article.blog['guid']}}" data-status="{{status}}">{{text}}</a>
+                            {% endif%}
+                        </div>
+                    {% endif%}
                 </div>
             </div>
         </div>
@@ -136,13 +137,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
-{% set network = _Network.getNetworkData() %}
 {% if network.thirdPartyIntegrations['disqus'] | length > 0 and network.thirdPartyIntegrations['disqus']['shortName'] != '' %}
 <div class="news-comment-container" id="disqusCommentBlock" style="margin-bottom:30px;">
     <div class="container">

@@ -30,7 +30,7 @@ Menu
                         {% endfor %}
                     </ul>
                     <div class="header__search">
-                        <form action="{{blog.url}}/search" method="get">
+                        <form action="{{blog.url}}/search" method="get"  autocomplete="off">
                             <input type="text" class="header__search-text" placeholder="Search ..." name="s" value="{{_AppHelper.getRequest('s')}}">
                         </form>
                     </div>

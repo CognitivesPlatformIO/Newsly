@@ -2,27 +2,29 @@
     <header class="sub-header">Followed by</header>
     {% if myFollowers | length > 0 %}
     <ul class="tabular-data-list">
-        {% for follower in myFollowers %}
-            {% set buttonClass = '' %}
-            {% set btnStatus = "follow" %}
-            {% if not _User.isGuest() and _User.isUserFollowing('writer', follower.follower_id) %}
-                {% set buttonClass = 'selected' %}
-                {% set btnStatus = "unfollow" %}
-            {% endif %}  
+        {% for follower in myFollowers %}    
         <li><a href="{{_AppHelper.buildUrl('profile/user-profile',{name: Html.encode(follower.follower['username'])})}}">
-                <span>
-                    {% if not _User.isGuest() %}
-                        {% if _User.getId() != follower.follower_id %} <!-- User cannot follow himself -->
-                        <button type="button" class="like FollowUnfollowUser {{buttonClass}} hasStar" aria-label="Like" data-id="{{follower.follower_id}}" data-status="{{btnStatus}}">
-                            <span aria-hidden="true"><i class="fa fa-star"></i></span>
-                        </button>
+                {% if not _Network.isNetworkClosed(network)%}
+                    {% set buttonClass = '' %}
+                    {% set btnStatus = "follow" %}
+                    {% if not _User.isGuest() and _User.isUserFollowing('writer', follower.follower_id) %}
+                        {% set buttonClass = 'selected' %}
+                        {% set btnStatus = "unfollow" %}
+                    {% endif %} 
+                    <span>
+                        {% if not _User.isGuest() %}
+                            {% if _User.getId() != follower.follower_id %} <!-- User cannot follow himself -->
+                                <button type="button" class="like FollowUnfollowUser {{buttonClass}} hasStar" aria-label="Like" data-id="{{follower.follower_id}}" data-status="{{btnStatus}}">
+                                    <span aria-hidden="true"><i class="fa fa-star"></i></span>
+                                </button>
+                            {% endif %}
+                        {% else %}
+                            <button type="button" class="like forceLoginModal" aria-label="Like">
+                                <span aria-hidden="true"><i class="fa fa-star"></i></span>
+                            </button>
                         {% endif %}
-                    {% else %}
-                     <button type="button" class="like forceLoginModal" aria-label="Like">
-                        <span aria-hidden="true"><i class="fa fa-star"></i></span>
-                    </button>
-                    {% endif %}
-                </span>
+                    </span>
+                {% endif %}
                 {% set followerImage = ''%}
                 {% if follower.follower['media']['path'] is defined and follower.follower['media']['path'] is not empty %}
                     {% set followerImage = _Media.getMediaUrl(follower.follower['media'], 80, 80, {crop: 'thumb', gravity: 'face'})%}

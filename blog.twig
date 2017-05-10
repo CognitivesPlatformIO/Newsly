@@ -42,18 +42,20 @@
                         </a>
                         <div class="sub_header__breadcrumb"> by <a href="{{_AppHelper.getUserProfileUrl(blogInfo.owner['username'])}}">{{blogInfo.owner['name']}}</a></div>
                     </div>
-                    <div class="sub_header--right">
-                        {% if not _User.isGuest %}
-                            {% set isUserFollowingBlog = _User.isUserFollowing('blog', blogInfo.id) %}
-                            {% if isUserFollowingBlog %}
-                                <a href="javascript:void(0)" class="sub_header__button followBlog" data-status="unfollow" data-guid="{{blogInfo.guid}}">Following -</a>
+                    {% if not _Network.isNetworkClosed(networkData)%}
+                        <div class="sub_header--right">
+                            {% if not _User.isGuest %}
+                                {% set isUserFollowingBlog = _User.isUserFollowing('blog', blogInfo.id) %}
+                                {% if isUserFollowingBlog %}
+                                    <a href="javascript:void(0)" class="sub_header__button followBlog" data-status="unfollow" data-guid="{{blogInfo.guid}}">Following -</a>
+                                {% else %}
+                                    <a href="javascript:void(0)" class="sub_header__button followBlog" data-status="follow"  data-guid="{{blogInfo.guid}}">Follow +</a>
+                                {% endif %}
                             {% else %}
-                                <a href="javascript:void(0)" class="sub_header__button followBlog" data-status="follow"  data-guid="{{blogInfo.guid}}">Follow +</a>
+                                <a href="javascript:void(0)" class="sub_header__button forceLoginModal">Follow +</a>
                             {% endif %}
-                        {% else %}
-                            <a href="javascript:void(0)" class="sub_header__button forceLoginModal">Follow +</a>
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -70,17 +72,19 @@
                     {% endif %}
                     <h1 class="card__feature-heading">{{blogInfo.title}}</h1>
                     <div class="card__feature-username">By {{blogInfo.owner['display_name']}}</div>
-                    {% if not _User.isGuest() %}
-                        {% if _User.getId() != blogInfo.owner['id'] %}
-                            {% set isUserFollowingUser = _User.isUserFollowing('user', blogInfo.owner['id']) %}
-                            {% if isUserFollowingUser %}
-                                <div href="javascript:void(0)" class="card__feature-button followUser" data-status="unfollow" data-guid="{{blogInfo.owner['guid']}}">Following -</div>
-                            {% else %}
-                                <div href="javascript:void(0)" class="card__feature-button followUser" data-status="follow" data-guid="{{blogInfo.owner['guid']}}">Follow +</div>
-                            {% endif %}
-                        {% endif %} 
-                    {% else %}
-                        <div class="card__feature-button forceLoginModal">Follow +</div>
+                    {% if not _Network.isNetworkClosed(networkData)%}
+                        {% if not _User.isGuest() %}
+                            {% if _User.getId() != blogInfo.owner['id'] %}
+                                {% set isUserFollowingUser = _User.isUserFollowing('user', blogInfo.owner['id']) %}
+                                {% if isUserFollowingUser %}
+                                    <div href="javascript:void(0)" class="card__feature-button followUser" data-status="unfollow" data-guid="{{blogInfo.owner['guid']}}">Following -</div>
+                                {% else %}
+                                    <div href="javascript:void(0)" class="card__feature-button followUser" data-status="follow" data-guid="{{blogInfo.owner['guid']}}">Follow +</div>
+                                {% endif %}
+                            {% endif %} 
+                        {% else %}
+                            <div class="card__feature-button forceLoginModal">Follow +</div>
+                        {% endif %}
                     {% endif %}
                 </a>
             </div>
@@ -131,16 +135,13 @@
         {% endfor %}
         
         <div class="row ajaxArticles" data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}" data-offset="{{limit}}"></div>
-        
     </div>
     
-        {% if articles|length >= limit %}
-            <div class="row">
-                <button 
-                    class="sub_header__button loadMoreArticles" style="border: none; color: #FFF; margin-left: 43%; cursor: pointer;"
-                        >Load More</button>
-            </div>
-        {% endif %}
+    {% if articles|length >= limit %}
+        <div class="row">
+            <button class="sub_header__button loadMoreArticles" style="border: none; color: #FFF; margin-left: 43%; cursor: pointer;">Load More</button>
+        </div>
+    {% endif %}
     
   </div>
 </div>
