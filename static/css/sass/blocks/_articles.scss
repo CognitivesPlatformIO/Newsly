@@ -193,6 +193,14 @@
                         font-weight: 400 !important;
                     }
                 }
+                a {
+                    border-bottom: 1px solid $base-color !important;
+                    color: $base-color;
+                    &:hover, &:focus {
+                        color: $hover-color;
+                        border-color: $link-color !important; 
+                    }
+                }
 
                 .medium-insert-embeds, .medium-insert-images, .medium-insert-vimeo, .medium-insert-instagram {
                     margin-bottom: 20px;
