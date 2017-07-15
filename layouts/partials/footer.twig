@@ -9,33 +9,6 @@
             {% set logo = _Media.getMediaUrl(network.logoMedia, 225, 50, {'crop': 'fit'} )%}
         {% endif %}
         <a href="{{logoUrl}}" class="footer__logo">{% if logo is not empty %}<img src="{{logo}}" />{% endif %}</a>
-        
-        <div class="social">
-            {% if blogInfo.social['twitter'] is not empty %}
-                <a href="{{blogInfo.social['twitter']}}" class="fa_twitter" target="_blank"><i class="fa fa-twitter"></i></a>
-                {% endif %}
-                {% if blogInfo.social['youtube'] is not empty %}
-                <a href="{{blogInfo.social['youtube']}}" class="fa_youtube" target="_blank"><i class="fa fa-youtube-play"></i></a>
-                {% endif %}
-                {% if blogInfo.social['google'] is not empty %}
-                <a href="{{blogInfo.social['google']}}" class="fa_gplus" target="_blank"><i class="fa fa-google-plus"></i></a>
-                {% endif %}
-                {% if blogInfo.social['instagram'] is not empty %}
-                <a href="{{blogInfo.social['instagram']}}" class="fa_instagram" target="_blank"><i class="fa fa-instagram"></i></a>
-                {% endif %}
-                {% if blogInfo.social['facebook'] is not empty %}
-                <a href="{{blogInfo.social['facebook']}}" class="fa_facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                {% endif %}
-                {% if blogInfo.social['vimeo'] is not empty %}
-                <a href="{{blogInfo.social['vimeo']}}" class="fa_vimeo" target="_blank"><i class="fa fa-vimeo"></i></a>
-                {% endif %}
-                {% if blogInfo.social['linkedin'] is not empty %}
-                <a href="{{blogInfo.social['linkedin']}}" class="fa_linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
-                {% endif %}
-                {% if blogInfo.social['pinterest'] is not empty %}
-                <a href="{{blogInfo.social['pinterest']}}" class="fa_pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
-                {% endif %}
-        </div>
         <div class="footer__copyright">Copyright {{'now'|date('Y')}}. All rights reserved. Powered By {{network.poweredBy}}</div>
       </div>
         {% set menuItems = blog.blogFooterMenu %}
