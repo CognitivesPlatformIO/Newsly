@@ -28,21 +28,25 @@
         {% set primaryFont = networkData['styling']['fonts']['primaryFont'] %}
         {% set secFont = networkData['styling']['fonts']['secondaryFont'] %}
 
-        {% if primaryFont != "" %}
+        {% if primaryFont != "" and secFont != "" and primaryFont == secFont %}
             <link href='https://fonts.googleapis.com/css?family={{primaryFont}}' rel='stylesheet' type='text/css'>
-        {% endif %}
+        {% elseif primaryFont != "" %}
+            <link href='https://fonts.googleapis.com/css?family={{primaryFont}}' rel='stylesheet' type='text/css'>
         {% if secFont != "" %}
             <link href='https://fonts.googleapis.com/css?family={{secFont}}' rel='stylesheet' type='text/css'>
         {% endif %}
+        {% elseif secFont != "" %}
+            <link href='https://fonts.googleapis.com/css?family={{secFont}}' rel='stylesheet' type='text/css'>
+        {% endif %}
         
-        <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="http://{{networkData.defaultDomain['domain']}}/feed/rss"/>
-        <link rel="canonical" href="http://{{networkData.defaultDomain['domain']}}" itemprop="url">
+        <link rel="alternate" type="application/rss+xml" title="{{_Network.getNetworkTitle()}} -  RSS Feeds" href="{{_AppHelper.getBaseUrl()}}/feed/rss"/>
+        <link rel="canonical" href="{{_AppHelper.getBaseUrl()}}" itemprop="url">
         
         <!--[if lte IE 8]><script type="text/javascript" src="{{networkData.templatePath}}/static/js/ie/ie.js"></script><![endif]-->
         {% set isPage = 'content_box_page' in _Page.getBodyClass() and 'page-contact-us' not in _Page.getBodyClass() %}
 			
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1497351097858" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/deploy/output.min.css?rel=1500099890316" type="text/css" media="all">
         {% else %}			
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.fancybox/source/jquery.fancybox.css" />
             <link type="text/css" rel="stylesheet" href="{{networkData.templatePath}}/static/plugins/jquery.noty-2.3.8/demo/animate.css" />
@@ -58,7 +62,13 @@
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/contentbuilder/contentbuilder.css" rel="stylesheet" type="text/css" />
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/contentbox/contentbox.css" rel="stylesheet" type="text/css" />
         {% endif %}
-        
+        <style>
+        @media print {
+            header, footer, .header, .side-navigation, .article__image {
+                display: none !important;
+            }
+        }
+        </style>
         {% set themeColors = networkData['styling']['colours'] %}
         <style type="text/css">
         {% if primaryFont != "" %}

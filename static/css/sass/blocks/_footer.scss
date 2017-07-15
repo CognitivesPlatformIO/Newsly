@@ -17,6 +17,61 @@
     @media #{$media-iPhoneLarge}, #{$media-iPhoneMedium}, #{$media-phone} {
       padding-bottom: 20px;
     }
+    .social { 
+        display: block;
+        margin-bottom: 10px;
+        .fa_twitter, .fa_facebook, .fa_gplus, .fa_instagram, .fa_youtube, .fa_linkedin, .fa_pinterest, .fa_vimeo {
+            color: $white;
+            font-size: 20px;
+            margin-right:16px;
+            margin-bottom:20px;
+            display: inline-block;
+            &:hover {
+                cursor: pointer;
+                @include transition(all 0.5s ease 0s);
+            }
+        }
+        .fa_twitter {
+            &:hover {
+                color: color(twitter) !important;
+            }
+        }
+        .fa_facebook {
+            &:hover {
+                color: color(facebook) !important;
+            }
+        }
+        .fa_gplus {
+            &:hover {
+                color: color(google-plus) !important;
+            }
+        }
+        .fa_instagram {
+            &:hover {
+                color: color(instagram) !important;
+            }
+        }
+        .fa_youtube {
+            &:hover {
+                color: color(youtube) !important;
+            }
+        }
+        .fa_linkedin {
+            &:hover {
+                color: color(linkedin) !important;
+            }
+        }
+        .fa_pinterest {
+            &:hover {
+                color: color(pinterest) !important;
+            }
+        }
+        .fa_vimeo {
+            &:hover {
+                color: color(vimeo) !important;
+            }
+        }
+    }
   }
   &__logo {
     /*background-position: 0% 50%;
