@@ -3,7 +3,8 @@
  */
 
 var systemCardTemplate = '<div itemscope itemtype="http://schema.org/NewsArticle"  class="article {{containerClass}} ">'+
-        '<meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{url}}"/>'+
+        '<meta itemprop="url" content="{{absoluteUrl}}" />'+
+        '<meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="{{absoluteUrl}}"/>'+
         '{{#if hasMedia}}  '+
         '<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'+
             '<meta itemprop="url" content="{{featuredMedia.media.url}}"/>'+
@@ -23,7 +24,7 @@ var systemCardTemplate = '<div itemscope itemtype="http://schema.org/NewsArticle
         '{{/if}}'+
         '<meta itemprop="datePublished" content="{{metaPublishDate}}"/>'+
         '<meta itemprop="dateModified" content="{{metaUpdateDate}}"/>'+
-        '<a itemprop="url" id="Article{{articleId}}" href="{{url}}" class="card swap card__news {{hasArticleMediaClass}} {{promotedClass}} {{blogClass}}" data-id="{{articleId}}" data-position="{{position}}" data-social="0" data-article-image="{{{imageUrl}}}" data-article-text="{{title}}">'+
+        '<a id="Article{{articleId}}" href="{{url}}" class="card swap card__news {{hasArticleMediaClass}} {{promotedClass}} {{blogClass}}" data-id="{{articleId}}" data-position="{{position}}" data-social="0" data-article-image="{{{imageUrl}}}" data-article-text="{{title}}">'+
             '{{#if hasMedia}}  '+
               '<div class="card-image lazyload" data-original="{{imageUrl}}" style="background-image:url({{templatePath}}/static/images/placeholder/placeholder.svg);"></div>'+
             '{{/if}}'+
@@ -45,9 +46,11 @@ var systemCardTemplate = '<div itemscope itemtype="http://schema.org/NewsArticle
                     '<button title="Hide" data-guid="{{guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="0">'+
                         '<i class="fa fa-eye-slash"></i><span class="hide">Hide</span>'+
                     '</button>'+
-                    '<button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button">'+
-                        '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
-                    '</button>'+
+                    '{{#if userHasEditArticleAccess}}'+
+                        '<button onclick="window.location=\'{{{editUrl}}}\'; return false;" title="Edit" class="btnhide social-tooltip" type="button">'+
+                            '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
+                        '</button>'+
+                    "{{/if}}"+
                     '<button data-position="{{position}}" data-social="0" data-id="{{articleId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn {{#if isPinned}} selected {{/if}}" type="button" data-status="{{isPinned}}">'+
                         '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+
                     '</button>'+
@@ -79,9 +82,11 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                             '<button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">'+
                                                 '<i class="fa fa-eye-slash"></i><span class="hide">Hide</span>'+
                                             '</button>'+
-                                            '<button title="Edit" class="btnhide social-tooltip editSocialPost" type="button" data-url="/admin/social-funnel/update-social?guid={{social.blog.guid}}&socialguid={{social.guid}}">'+
-                                            '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
-                                            '</button>'+
+                                            '{{#if userHasEditArticleAccess}}'+
+                                                '<button title="Edit" class="btnhide social-tooltip editSocialPost" type="button" data-url="/admin/social-funnel/update-social?guid={{social.blog.guid}}&socialguid={{social.guid}}">'+
+                                                '<i class="fa fa-edit"></i><span class="hide">Edit</span>'+
+                                                '</button>'+
+                                            '{{/if}}'+ 
                                             '<button data-position="{{position}}" data-social="1" data-id="{{socialId}}" title="{{pinTitle}}" class="btnhide social-tooltip PinArticleBtn {{#if isPinned}} selected {{/if}}" type="button" data-status="{{isPinned}}">'+
                                                 '<i class="fa fa-thumb-tack"></i><span class="hide">{{pinText}}</span>'+
                                             '</button>'+
